@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="FluentConfigs\" />
     <Folder Include="Repository\" />
   </ItemGroup>
 
