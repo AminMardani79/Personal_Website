@@ -29,7 +29,16 @@ namespace Data.ApplicationContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var mutableForeignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                mutableForeignKey.DeleteBehavior = DeleteBehavior.Cascade;
+            }
 
+            #region QueryFilters
+
+            modelBuilder.Entity<ProjectCategory>().HasQueryFilter(p => p.IsCategoryDelete == false);
+
+            #endregion
         }
     }
 }

@@ -1,4 +1,5 @@
 using Data.ApplicationContext;
+using IOC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,12 @@ namespace PersonalWebsite
             {
                 options.UseSqlServer(Configuration.GetConnectionString("PersonalWeb"));
             });
+
+            #region IOC
+
+            RegisterService(services);
+
+            #endregion
             services.AddControllersWithViews();
         }
 
@@ -62,6 +69,10 @@ namespace PersonalWebsite
                       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             });
+        }
+        public static void RegisterService(IServiceCollection service)
+        {
+            DependencyContainer.RegisterServices(service);
         }
     }
 }
