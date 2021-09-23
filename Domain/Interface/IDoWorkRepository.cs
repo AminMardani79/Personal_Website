@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IDoWorkRepository
     {
-        Task<IEnumerable<DoWork>> GetDoWorksList(string search);
+        Task<IEnumerable<DoWork>> GetDoWorksList(string search,int skip,int take);
         Task<DoWork> GetDoWorkById(int workId);
         void CreateDoWork(DoWork work);
         void DeleteDoWork(DoWork work);

@@ -34,9 +34,9 @@ namespace Data.Repository
             return await _context.Experiences.SingleOrDefaultAsync(e=> e.ExperienceId == experienceId);
         }
 
-        public async Task<IEnumerable<Experience>> GetExperiencesList(string search)
+        public async Task<IEnumerable<Experience>> GetExperiencesList(string search, int skip, int take)
         {
-            return await _context.Experiences.Where(e=> EF.Functions.Like(e.ExperienceTitle,$"%{search}%")).ToListAsync();
+            return await _context.Experiences.Where(e=> EF.Functions.Like(e.ExperienceTitle,$"%{search}%")).Skip(skip).Take(take).ToListAsync();
         }
 
         public void Save()

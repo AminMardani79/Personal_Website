@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IProjectRepository
     {
-        Task<IEnumerable<Project>> GetProjectsList(string search);
+        Task<IEnumerable<Project>> GetProjectsList(string search, int skip, int take);
         Task<Project> GetProjectById(int projectId);
         void CreateProject(Project project);
         void DeleteProject(Project project);

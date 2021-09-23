@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IContactMessageRepository
     {
-        Task<IEnumerable<ContactMessage>> GetMessagesList(string search);
+        Task<IEnumerable<ContactMessage>> GetMessagesList(string search,int skip,int take);
         Task<ContactMessage> GetMessageById(int messageId);
         void CreateMessage(ContactMessage message);
         void DeleteMessage(ContactMessage message);

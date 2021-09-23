@@ -29,9 +29,9 @@ namespace Data.Repository
             Save();
         }
 
-        public async Task<IEnumerable<DoWork>> GetDoWorksList(string search)
+        public async Task<IEnumerable<DoWork>> GetDoWorksList(string search, int skip, int take)
         {
-            return await _context.DoWorks.Where(d => EF.Functions.Like(d.DoWorkTitle, $"%{search}%")).ToListAsync();
+            return await _context.DoWorks.Where(d => EF.Functions.Like(d.DoWorkTitle, $"%{search}%")).Skip(skip).Take(take).ToListAsync();
         }
 
         public async Task<DoWork> GetDoWorkById(int workId)

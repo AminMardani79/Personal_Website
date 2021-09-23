@@ -34,9 +34,9 @@ namespace Data.Repository
             return await _context.Projects.SingleOrDefaultAsync(p=> p.ProjectId == projectId);
         }
 
-        public async Task<IEnumerable<Project>> GetProjectsList(string search)
+        public async Task<IEnumerable<Project>> GetProjectsList(string search, int skip, int take)
         {
-            return await _context.Projects.Where(p => EF.Functions.Like(p.ProjectTitle, $"%{search}%")).ToListAsync();
+            return await _context.Projects.Where(p => EF.Functions.Like(p.ProjectTitle, $"%{search}%")).Skip(skip).Take(take).ToListAsync();
         }
 
         public void Save()

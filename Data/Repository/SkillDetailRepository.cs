@@ -34,9 +34,9 @@ namespace Data.Repository
             return await _context.SkillDetails.SingleOrDefaultAsync(s=> s.SkillDetailId == skillDetailId);
         }
 
-        public async Task<IEnumerable<SkillDetail>> GetSkillDetailsList(string search)
+        public async Task<IEnumerable<SkillDetail>> GetSkillDetailsList(string search, int skip, int take)
         {
-            return await _context.SkillDetails.Where(s => EF.Functions.Like(s.SkillTitle, $"%{search}%")).ToListAsync();
+            return await _context.SkillDetails.Where(s => EF.Functions.Like(s.SkillTitle, $"%{search}%")).Skip(skip).Take(take).ToListAsync();
         }
 
         public void Save()

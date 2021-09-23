@@ -35,9 +35,9 @@ namespace Data.Repository
             return await _context.Majors.SingleOrDefaultAsync(m=> m.MajorId == majorId);
         }
 
-        public async Task<IEnumerable<Major>> GetMajoresList(string search)
+        public async Task<IEnumerable<Major>> GetMajoresList(string search, int skip, int take)
         {
-            return await _context.Majors.Where(m=> EF.Functions.Like(m.MajorTitle,$"%{search}%")).ToListAsync();
+            return await _context.Majors.Where(m=> EF.Functions.Like(m.MajorTitle,$"%{search}%")).Skip(skip).Take(take).ToListAsync();
         }
 
         public void Save()

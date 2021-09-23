@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface ISkillDetailRepository
     {
-        Task<IEnumerable<SkillDetail>> GetSkillDetailsList(string search);
+        Task<IEnumerable<SkillDetail>> GetSkillDetailsList(string search, int skip, int take);
         Task<SkillDetail> GetSkillDetailById(int skillDetailId); 
         void CreateSkillDetail(SkillDetail skillDetail);
         void DeleteSkillDetail(SkillDetail skillDetail);

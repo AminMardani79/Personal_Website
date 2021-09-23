@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IMajorRepository
     {
-        Task<IEnumerable<Major>> GetMajoresList(string search);
+        Task<IEnumerable<Major>> GetMajoresList(string search, int skip, int take);
         Task<Major> GetMajorById(int majorId);
         void CreateMajor(Major major);
         void DeleteMajor(Major major);
