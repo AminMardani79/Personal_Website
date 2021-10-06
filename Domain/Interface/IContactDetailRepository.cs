@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IContactDetailRepository
     {
-        Task<ContactDetail> GetContactDetailById(int detailId);
+        Task<ContactDetail> GetContactDetail();
         void UpdateContactDetail(ContactDetail detail);
         void Save();
     }

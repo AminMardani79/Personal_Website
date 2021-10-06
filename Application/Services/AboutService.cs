@@ -16,21 +16,22 @@ namespace Application.Services
         {
             _aboutRepository = aboutRepository;
         }
-        public async Task<EditAboutMeViewModel> GetAboutById(int aboutId)
+        public async Task<EditAboutMeViewModel> GetAbout()
         {
-            var about = await _aboutRepository.GetAboutById(aboutId);
+            var about = await _aboutRepository.GetAbout();
             EditAboutMeViewModel model = new EditAboutMeViewModel();
             model.AboutMeContext = about.AboutMeContext;
             model.AboutMeDes = about.AboutMeDes;
             model.AboutMeId = about.AboutMeId;
             model.CustomerCount = about.CustomerCount;
             model.ProjectsCount = about.ProjectsCount;
+            model.AboutMeId = about.AboutMeId;
             return model;
         }
 
         public void UpdateAbout(EditAboutMeViewModel about)
         {
-            var model = _aboutRepository.GetAboutById(about.AboutMeId).Result;
+            var model = _aboutRepository.GetAbout().Result;
             model.AboutMeContext = about.AboutMeContext;
             model.AboutMeDes = about.AboutMeDes;
             model.CustomerCount = about.CustomerCount;

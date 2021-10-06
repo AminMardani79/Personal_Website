@@ -1,0 +1,52 @@
+﻿@model EditContactDetailViewModel
+@{
+    ViewData["Title"] = "اطلاعات تماس";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">تماس با من</h6>
+                <form asp-controller="Contact" asp-action="EditContact">
+                    <input type="hidden" asp-for="ContactId" />
+                    <div class="form-group">
+                        <label for="exampleInputText1">توضیحات</label>
+                        <textarea class="form-control" asp-for="ContactDescription" rows="4"></textarea>
+                        <span asp-validation-for="ContactDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">ایمیل</label>
+                        <input type="text" class="form-control" asp-for="ContactEmail" placeholder="ایمیل" />
+                        <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">شماره تماس</label>
+                        <input type="text" class="form-control" asp-for="ContactNumber" placeholder="شماره تماس" />
+                        <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تلگرام</label>
+                        <input type="text" class="form-control" asp-for="Telegram" placeholder="تلگرام" />
+                        <span asp-validation-for="Telegram" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">لینکداین</label>
+                        <input type="text" class="form-control" asp-for="LinkdIn" placeholder="لینکداین" />
+                        <span asp-validation-for="LinkdIn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">اینستاگرام</label>
+                        <input type="text" class="form-control" asp-for="Instagram" placeholder="اینستاگرام" />
+                        <span asp-validation-for="Instagram" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

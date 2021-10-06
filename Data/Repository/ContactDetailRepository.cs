@@ -17,9 +17,9 @@ namespace Data.Repository
         {
             _context = context;
         }
-        public async Task<ContactDetail> GetContactDetailById(int detailId)
+        public async Task<ContactDetail> GetContactDetail()
         {
-            return await _context.ContactDetails.SingleOrDefaultAsync(c=> c.ContactId == detailId);
+            return await _context.ContactDetails.FirstOrDefaultAsync();
         }
 
         public void Save()

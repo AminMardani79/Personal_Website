@@ -16,9 +16,9 @@ namespace Application.Services
         {
             _contactDetailRepository = contactDetailRepository;
         }
-        public async Task<EditContactDetailViewModel> GetContactDetailById(int detailId)
+        public async Task<EditContactDetailViewModel> GetContactDetail()
         {
-            var detail = await _contactDetailRepository.GetContactDetailById(detailId);
+            var detail = await _contactDetailRepository.GetContactDetail();
             EditContactDetailViewModel model = new EditContactDetailViewModel();
             model.ContactDescription = detail.ContactDescription;
             model.ContactEmail = detail.ContactEmail;
@@ -32,13 +32,13 @@ namespace Application.Services
 
         public void UpdateContactDetail(EditContactDetailViewModel detail)
         {
-            var model = _contactDetailRepository.GetContactDetailById(detail.ContactId).Result;
-            detail.ContactDescription = model.ContactDescription;
-            detail.ContactEmail = model.ContactEmail;
-            detail.ContactNumber = model.ContactNumber;
-            detail.Instagram = model.Instagram;
-            detail.LinkdIn = model.LinkdIn;
-            detail.Telegram = model.Telegram;
+            var model = _contactDetailRepository.GetContactDetail().Result;
+            model.ContactDescription = detail.ContactDescription;
+            model.ContactEmail = detail.ContactEmail;
+            model.ContactNumber = detail.ContactNumber;
+            model.Instagram = detail.Instagram;
+            model.LinkdIn = detail.LinkdIn;
+            model.Telegram = detail.Telegram;
             _contactDetailRepository.UpdateContactDetail(model);
         }
     }

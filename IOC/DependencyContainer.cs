@@ -1,4 +1,6 @@
-﻿using Data.Repository;
+﻿using Application.Interface;
+using Application.Services;
+using Data.Repository;
 using Domain.Interface;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -24,6 +26,18 @@ namespace IOC
             service.AddScoped<IProjectCategoryRepository,ProjectCategoryRepository>();
             service.AddScoped<ISkillDetailRepository,SkillDetailRepository>();
             service.AddScoped<ISkillRepository,SkillRepository>();
+
+            // Services
+            service.AddScoped<IAboutService, AboutService>();
+            service.AddScoped<IContactDetailService, ContactDetailService>();
+            service.AddScoped<IContactMessageService, ContactMessageService>();
+            service.AddScoped<IDoWorkService, DoWorkService>();
+            service.AddScoped<IExperienceService, ExperienceService>();
+            service.AddScoped<IMajorService, MajorService>();
+            service.AddScoped<IProjectService, ProjectService>();
+            service.AddScoped<IProjectCategoryService, ProjectCategoryService>();
+            service.AddScoped<ISkillDetailService, SkillDetailService>();
+            service.AddScoped<ISkillService, SkillService>();
         }
     }
 }

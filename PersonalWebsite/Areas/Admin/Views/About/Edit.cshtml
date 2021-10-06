@@ -1,0 +1,41 @@
+﻿@model EditAboutMeViewModel
+@{
+    ViewData["Title"] = "درباره ما";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">درباره ما</h6>
+                <form asp-controller="About" asp-action="Edit">
+                    <input type="hidden" asp-for="AboutMeId"/>
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان درباره من</label>
+                        <textarea class="form-control" asp-for="AboutMeDes" rows="4"></textarea>
+                        <span asp-validation-for="AboutMeDes" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">توضیح</label>
+                        <textarea class="form-control" rows="7" asp-for="AboutMeContext"></textarea>
+                        <span asp-validation-for="AboutMeContext" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تعداد پروژه ها</label>
+                        <input type="number" min="0" class="form-control" asp-for="ProjectsCount" placeholder="تعداد پروژه ها" />
+                        <span asp-validation-for="ProjectsCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تعداد مشتری ها</label>
+                        <input type="number" min="0" class="form-control" asp-for="CustomerCount" placeholder="تعداد مشتری ها" />
+                        <span asp-validation-for="CustomerCount" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

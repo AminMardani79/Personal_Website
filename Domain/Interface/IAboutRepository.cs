@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface IAboutRepository
     {
-        Task<AboutMe> GetAboutById(int aboutId);
+        Task<AboutMe> GetAbout();
         void UpdateAbout(AboutMe about);
         void Save();
     }

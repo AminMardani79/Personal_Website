@@ -9,7 +9,7 @@ namespace Application.Interface
 {
     public interface IContactDetailService
     {
-        Task<EditContactDetailViewModel> GetContactDetailById(int detailId);
+        Task<EditContactDetailViewModel> GetContactDetail();
         void UpdateContactDetail(EditContactDetailViewModel detail);
     }
 }

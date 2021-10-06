@@ -9,7 +9,7 @@ namespace Application.Interface
 {
     public interface IAboutService
     {
-        Task<EditAboutMeViewModel> GetAboutById(int aboutId);
+        Task<EditAboutMeViewModel> GetAbout();
         void UpdateAbout(EditAboutMeViewModel about);
     }
 }

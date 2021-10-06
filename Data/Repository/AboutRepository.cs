@@ -17,9 +17,9 @@ namespace Data.Repository
         {
             _context = context;
         }
-        public async Task<AboutMe> GetAboutById(int aboutId)
+        public async Task<AboutMe> GetAbout()
         {
-            return await _context.AboutMe.SingleOrDefaultAsync(a=> a.AboutMeId == aboutId);
+            return await _context.AboutMe.FirstOrDefaultAsync();
         }
 
         public void Save()
