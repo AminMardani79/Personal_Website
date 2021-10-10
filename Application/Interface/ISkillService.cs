@@ -9,7 +9,7 @@ namespace Application.Interface
 {
     public interface ISkillService
     {
-        Task<EditSkillViewModel> GetSkillById(int skillId);
+        Task<EditSkillViewModel> GetSkill();
         void UpdateSkill(EditSkillViewModel skill);
     }
 }

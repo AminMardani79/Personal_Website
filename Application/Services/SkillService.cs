@@ -16,18 +16,18 @@ namespace Application.Services
         {
             _skillRepository = skillRepository;
         }
-        public async Task<EditSkillViewModel> GetSkillById(int skillId)
+        public async Task<EditSkillViewModel> GetSkill()
         {
-            var skill = await _skillRepository.GetSkillById(skillId);
+            var skill = await _skillRepository.GetSkill();
             EditSkillViewModel model = new EditSkillViewModel();
             model.SkillDescription = skill.SkillDescription;
-            model.SkillId = skillId;
+            model.SkillId = skill.SkillId;
             return model;
         }
 
         public void UpdateSkill(EditSkillViewModel skill)
         {
-            var model = _skillRepository.GetSkillById(skill.SkillId).Result;
+            var model = _skillRepository.GetSkill().Result;
             model.SkillDescription = skill.SkillDescription;
             _skillRepository.UpdateSkill(model);
         }

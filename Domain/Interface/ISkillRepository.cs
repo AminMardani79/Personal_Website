@@ -9,7 +9,7 @@ namespace Domain.Interface
 {
     public interface ISkillRepository
     {
-        Task<Skill> GetSkillById(int skillId);
+        Task<Skill> GetSkill();
         void UpdateSkill(Skill skill);
         void Save();
     }

@@ -17,9 +17,9 @@ namespace Data.Repository
         {
             _context = context;
         }
-        public async Task<Skill> GetSkillById(int skillId)
+        public async Task<Skill> GetSkill()
         {
-            return await _context.Skills.SingleOrDefaultAsync(s=> s.SkillId == skillId);
+            return await _context.Skills.FirstOrDefaultAsync();
         }
 
         public void Save()

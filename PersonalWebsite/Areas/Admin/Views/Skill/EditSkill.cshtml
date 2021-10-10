@@ -1,0 +1,27 @@
+﻿@model EditSkillViewModel
+@{
+    ViewData["Title"] = "متن مهارت ها";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">درباره ما</h6>
+                <form asp-controller="Skill" asp-action="EditSkill">
+                    <input type="hidden" asp-for="SkillId" />
+                    <div class="form-group">
+                        <label for="exampleInputText1">توضیحات</label>
+                        <textarea class="form-control" asp-for="SkillDescription" rows="5"></textarea>
+                        <span asp-validation-for="SkillDescription" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                    <a href="/Admin/Skill/Details/@ViewBag.SkillId" class="btn btn-success">مهارت ها</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
