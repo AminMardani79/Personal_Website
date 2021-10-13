@@ -1,0 +1,43 @@
+﻿@model EditDoWorkViewModel
+@{
+    ViewData["Title"] = "ویرایش کار";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">ویرایش کار</h6>
+                    <a href="/Admin/DoWorks">
+                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                    </a>
+                </div>
+                <form href="/Admin/EditDoWork/@Model.DoWorkId" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="DoWorkId" />
+                    <input type="hidden" asp-for="DoWorkImage" />
+                    <div class="form-group">
+                        <label for="exampleInputText1">تصویر کار</label>
+                        <img src="/image/@Model.DoWorkImage" style="width:200px;height:150px"/>
+                        <input asp-for="ImageFile" type="file" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان مهارت</label>
+                        <input type="text" class="form-control" asp-for="DoWorkTitle" placeholder="عنوان کار" />
+                        <span asp-validation-for="DoWorkTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">توضیحات کار</label>
+                        <textarea asp-for="DoWorkDesc" rows="5" class="form-control"></textarea>
+                        <span asp-validation-for="DoWorkDesc" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

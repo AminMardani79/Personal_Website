@@ -1,0 +1,44 @@
+﻿@model CreateMajorViewModel
+@{
+    ViewData["Title"] = "افزودن رشته و تحصیلات";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">ایجاد رشته و تحصیلات</h6>
+                    <a href="/Admin/Majors">
+                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                    </a>
+                </div>
+                <form asp-controller="Major" asp-action="CreateMajor" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان</label>
+                        <input type="text" class="form-control" asp-for="MajorTitle" placeholder="عنوان" />
+                        <span asp-validation-for="MajorTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">زیر عنوان</label>
+                        <input type="text" class="form-control" asp-for="MajorSubTitle" placeholder="زیر عنوان" />
+                        <span asp-validation-for="MajorSubTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تاریخ شروع</label>
+                        <input type="text" class="form-control" asp-for="MajorStart" placeholder="تاریخ شروع" />
+                        <span asp-validation-for="MajorStart" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تاریخ پایان</label>
+                        <input type="text" class="form-control" asp-for="MajorEnd" placeholder="تاریخ پایان" />
+                        <span asp-validation-for="MajorEnd" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">افزودن</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

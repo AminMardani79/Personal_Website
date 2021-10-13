@@ -1,0 +1,53 @@
+﻿@model CreateExperienceViewModel
+@{
+    ViewData["Title"] = "افزودن تجربه";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">ایجاد تجربه</h6>
+                    <a href="/Admin/Experiences">
+                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                    </a>
+                </div>
+                <form asp-controller="Experience" asp-action="CreateExperience" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputText1">تصویر کار</label>
+                        <input type="file" asp-for="ImageFile" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان</label>
+                        <input type="text" class="form-control" asp-for="ExperienceTitle" placeholder="عنوان" />
+                        <span asp-validation-for="ExperienceTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">نام تیم</label>
+                        <input type="text" class="form-control" asp-for="GroupName" placeholder="نام تیم" />
+                        <span asp-validation-for="GroupName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تاریخ</label>
+                        <input type="text" class="form-control" asp-for="Date" placeholder="تاریخ" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان</label>
+                        <input type="text" class="form-control" asp-for="ExperienceType" placeholder="نوع همکاری" />
+                        <span asp-validation-for="ExperienceType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">توضیحات</label>
+                        <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">افزودن</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

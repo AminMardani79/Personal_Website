@@ -17,8 +17,6 @@ namespace Application.ViewModel.DoWorkViewModel
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string DoWorkDesc { get; set; }
-        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public IFormFile DoWorkImage { set; get; }
     }
 }

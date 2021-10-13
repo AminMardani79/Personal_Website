@@ -62,6 +62,7 @@ namespace Application.Services
                     model.DoWorkImage = ImageConvertor.SaveImage(doWork.ImageFile);
                 }
             }
+            _doWorkRepository.UpdateDoWork(model);
         }
 
         public async Task<EditDoWorkViewModel> GetDoWorkById(int doWorkId)
@@ -71,6 +72,7 @@ namespace Application.Services
             model.DoWorkTitle = doWork.DoWorkTitle;
             model.DoWorkDesc = doWork.DoWorkDesc;
             model.DoWorkImage = doWork.DoWorkImage;
+            model.DoWorkId = doWorkId;
             return model;
         }
 

@@ -21,7 +21,7 @@ namespace Application.Services
         public void CreateExperience(CreateExperienceViewModel experience)
         {
             Experience model = new Experience();
-            model.Date = DateTime.Now.ToShamsi();
+            model.Date = experience.Date;
             model.Description = experience.Description;
             model.ExperienceTitle = experience.ExperienceTitle;
             model.ExperienceType = experience.ExperienceType;
@@ -38,6 +38,7 @@ namespace Application.Services
             {
                 model.Image = "default.png";
             }
+            _experienceRepository.CreateExperience(model);
         }
 
         public void DeleteExperience(int experienceId)
@@ -53,6 +54,7 @@ namespace Application.Services
             model.ExperienceTitle = experience.ExperienceTitle;
             model.Description = experience.Description;
             model.GroupName = experience.GroupName;
+            model.Date = experience.Date;
             if (experience.ImageFile != null)
             {
                 bool checkImage = experience.ImageFile.IsImage();
@@ -62,6 +64,7 @@ namespace Application.Services
                     model.Image = ImageConvertor.SaveImage(experience.ImageFile);
                 }
             }
+            _experienceRepository.UpdateExperience(model);
         }
 
         public async Task<EditExperienceViewModel> GetExperienceById(int experienceId)
@@ -74,6 +77,7 @@ namespace Application.Services
             model.GroupName = experience.GroupName;
             model.Image = experience.Image;
             model.Date = experience.Date;
+            model.ExperienceId = experience.ExperienceId;
             return model;
         }
 
@@ -91,7 +95,8 @@ namespace Application.Services
                     ExperienceType = experience.ExperienceType,
                     ExperienceTitle = experience.ExperienceTitle,
                     Date = experience.Date,
-                    GroupName = experience.GroupName
+                    GroupName = experience.GroupName,
+                    Image = experience.Image
                 });
             }
             return Tuple.Create(models, pagesCount, pageNumber);

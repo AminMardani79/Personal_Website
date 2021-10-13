@@ -26,8 +26,6 @@ namespace Application.ViewModel.ExperienceViewModel
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(20, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string ExperienceType { get; set; }
-        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public IFormFile ImageFile { get; set; }
     }
 }
