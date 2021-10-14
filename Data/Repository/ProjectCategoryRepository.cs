@@ -28,6 +28,11 @@ namespace Data.Repository
             _context.Remove(category);
             Save();
         }
+        public void AttachProjectCategory(ProjectCategory category)
+        {
+            _context.Attach(category);
+            Save();
+        }
 
         public async Task<ProjectCategory> GetDeletedProjectCategoryById(int categoryId)
         {

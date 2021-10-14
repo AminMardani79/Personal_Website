@@ -18,6 +18,7 @@ namespace Application.Services
         {
             _projectCategoryRepository = projectCategoryRepository;
         }
+
         public void CreateProjectCategory(CreateProjectCategoryViewModel projectCategory)
         {
             ProjectCategory model = new ProjectCategory();
@@ -29,6 +30,19 @@ namespace Application.Services
         {
             var model = _projectCategoryRepository.GetProjectCategoryById(projectCategoryId).Result;
             _projectCategoryRepository.DeleteProjectCategory(model);
+        }
+        public void AddCategoryToTrashList(int projectCategoryId)
+        {
+            var model = _projectCategoryRepository.GetProjectCategoryById(projectCategoryId).Result;
+            model.IsCategoryDelete = true;
+            _projectCategoryRepository.AttachProjectCategory(model);
+        }
+
+        public void BackToList(int projectCategoryId)
+        {
+            var model = _projectCategoryRepository.GetDeletedProjectCategoryById(projectCategoryId).Result;
+            model.IsCategoryDelete = false;
+            _projectCategoryRepository.AttachProjectCategory(model);
         }
 
         public void EditProjectCategory(EditProjectCategoryViewModel projectCategory)

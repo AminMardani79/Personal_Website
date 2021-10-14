@@ -16,6 +16,7 @@ namespace Domain.Interface
         void CreateProjectCategory(ProjectCategory category);
         void UpdateProjectCategory(ProjectCategory category);
         void DeleteProjectCategory(ProjectCategory category);
+        void AttachProjectCategory(ProjectCategory category);
         void Save();
     }
 }

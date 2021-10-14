@@ -41,6 +41,7 @@ namespace Application.Services
             model.MajorStart = major.MajorStart;
             model.MajorSubTitle = major.MajorSubTitle;
             model.MajorTitle = major.MajorTitle;
+            model.MajorId = major.MajorId;
             _majorRepository.UpdateMajor(model);
         }
 
