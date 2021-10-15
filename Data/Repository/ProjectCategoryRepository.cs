@@ -39,7 +39,7 @@ namespace Data.Repository
             return await _context.ProjectCategorys.Where(p=> p.IsCategoryDelete == true).IgnoreQueryFilters().SingleOrDefaultAsync(p=> p.CategoryId == categoryId);
         }
 
-        public async Task<IEnumerable<ProjectCategory>> GetDeletedProjectCategoryList(string search)
+        public async Task<List<ProjectCategory>> GetDeletedProjectCategoryList(string search)
         {
             return await _context.ProjectCategorys.Where(p=> EF.Functions.Like(p.CategoryTitle,$"%{search}%") && p.IsCategoryDelete == true).IgnoreQueryFilters().ToListAsync();
         }
@@ -49,7 +49,7 @@ namespace Data.Repository
             return await _context.ProjectCategorys.SingleOrDefaultAsync(p=> p.CategoryId == categoryId);
         }
 
-        public async Task<IEnumerable<ProjectCategory>> GetProjectCategoryList(string search)
+        public async Task<List<ProjectCategory>> GetProjectCategoryList(string search)
         {
             return await _context.ProjectCategorys.Where(p => EF.Functions.Like(p.CategoryTitle, $"%{search}%")).ToListAsync();
         }

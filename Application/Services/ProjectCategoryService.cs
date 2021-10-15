@@ -47,7 +47,7 @@ namespace Application.Services
 
         public void EditProjectCategory(EditProjectCategoryViewModel projectCategory)
         {
-            var model = _projectCategoryRepository.GetDeletedProjectCategoryById(projectCategory.CategoryId).Result;
+            var model = _projectCategoryRepository.GetProjectCategoryById(projectCategory.CategoryId).Result;
             model.CategoryTitle = projectCategory.CategoryTitle;
             _projectCategoryRepository.UpdateProjectCategory(model);
         }
@@ -85,7 +85,7 @@ namespace Application.Services
             return model;
         }
 
-        public async Task<List<ProjectCategoryViewModel>> GetProjectCategoryList(string search)
+        public async Task<IEnumerable<ProjectCategoryViewModel>> GetProjectCategoryList(string search)
         {
             var categoryList = await _projectCategoryRepository.GetProjectCategoryList(search);
             List<ProjectCategoryViewModel> models = new List<ProjectCategoryViewModel>();

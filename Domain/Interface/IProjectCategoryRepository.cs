@@ -9,8 +9,8 @@ namespace Domain.Interface
 {
     public interface IProjectCategoryRepository
     {
-        Task<IEnumerable<ProjectCategory>> GetProjectCategoryList(string search);
-        Task<IEnumerable<ProjectCategory>> GetDeletedProjectCategoryList(string search);
+        Task<List<ProjectCategory>> GetProjectCategoryList(string search);
+        Task<List<ProjectCategory>> GetDeletedProjectCategoryList(string search);
         Task<ProjectCategory> GetProjectCategoryById(int categoryId);
         Task<ProjectCategory> GetDeletedProjectCategoryById(int categoryId);
         void CreateProjectCategory(ProjectCategory category);

@@ -1,0 +1,30 @@
+﻿@model EditProjectCategoryViewModel
+@{
+    ViewData["Title"] = "افزودن دسته بندی";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">افزودن دسته بندی</h6>
+                    <a href="/Admin/Categories">
+                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                    </a>
+                </div>
+                <form asp-controller="ProjectCategory" asp-action="EditCategory" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="CategoryId"/>
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان</label>
+                        <input type="text" class="form-control" asp-for="CategoryTitle" placeholder="عنوان" />
+                        <span asp-validation-for="CategoryTitle" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

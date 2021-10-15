@@ -9,7 +9,7 @@ namespace Application.Interface
 {
     public interface IProjectCategoryService
     {
-        Task<List<ProjectCategoryViewModel>> GetProjectCategoryList(string search);
+        Task<IEnumerable<ProjectCategoryViewModel>> GetProjectCategoryList(string search);
         Task<List<ProjectCategoryViewModel>> GetDeletedProjectCategoryList(string search);
         Task<EditProjectCategoryViewModel> GetProjectCategoryById(int projectCategoryId);
         Task<EditProjectCategoryViewModel> GetDeletedProjectCategoryById(int projectCategoryId);

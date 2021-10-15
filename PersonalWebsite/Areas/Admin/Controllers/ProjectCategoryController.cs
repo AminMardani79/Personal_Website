@@ -20,14 +20,14 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         [Route("/Admin/Categories/{search?}")]
         public IActionResult Categories(string search)
         {
-            var categories = _projectCategoryService.GetProjectCategoryList(search ?? "");
+            var categories = _projectCategoryService.GetProjectCategoryList(search ?? "").Result;
             return View(categories);
         }
         [HttpGet]
         [Route("/Admin/DeletedCategories/{search?}")]
         public IActionResult DeletedCategories(string search)
         {
-            var categories = _projectCategoryService.GetDeletedProjectCategoryList(search ?? "");
+            var categories = _projectCategoryService.GetDeletedProjectCategoryList(search ?? "").Result;
             return View(categories);
         }
         [HttpGet]
@@ -38,7 +38,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Route("/Admin/CreateCategory/{id}")]
+        [Route("/Admin/CreateCategory")]
         public IActionResult CreateCategory(CreateProjectCategoryViewModel model)
         {
             if (ModelState.IsValid)
