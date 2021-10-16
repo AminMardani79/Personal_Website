@@ -1,0 +1,55 @@
+﻿@model EditProjectViewModel
+@{
+    ViewData["Title"] = "ویرایش پروژه";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">ویرایش پروژه</h6>
+                    <a href="/Admin/Projects">
+                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                    </a>
+                </div>
+                <form asp-controller="Project" asp-action="EditProject" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="ProjectId"/>
+                    <input type="hidden" asp-for="ProjectImage"/>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تصویر</label>
+                        <input type="file" asp-for="ImageFile" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">عنوان</label>
+                        <input type="text" class="form-control" asp-for="ProjectTitle" placeholder="عنوان" />
+                        <span asp-validation-for="ProjectTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">زیر عنوان</label>
+                        <input type="text" class="form-control" asp-for="ProjectSubTitle" placeholder="زیر عنوان" />
+                        <span asp-validation-for="ProjectSubTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">دسته بندی</label>
+                        <select asp-for="CategoryId" asp-items="@ViewBag.Categories"></select>
+                        <span asp-validation-for="ProjectSubTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">لینک دانلود</label>
+                        <input type="text" class="form-control" asp-for="DownloadLink" placeholder="لینک دانلود" />
+                        <span asp-validation-for="DownloadLink" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">توضیحات</label>
+                        <textarea asp-for="ProjectDescription" rows="5" class="form-control"></textarea>
+                        <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

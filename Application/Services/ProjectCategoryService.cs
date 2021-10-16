@@ -99,5 +99,19 @@ namespace Application.Services
             }
             return models;
         }
+        public async Task<IEnumerable<ProjectCategoryViewModel>> GetProjectCategoryList()
+        {
+            var categoryList = await _projectCategoryRepository.GetProjectCategoryList();
+            List<ProjectCategoryViewModel> models = new List<ProjectCategoryViewModel>();
+            foreach (var category in categoryList)
+            {
+                models.Add(new ProjectCategoryViewModel()
+                {
+                    CategoryId = category.CategoryId,
+                    CategoryTitle = category.CategoryTitle
+                });
+            }
+            return models;
+        }
     }
 }

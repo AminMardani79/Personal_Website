@@ -10,6 +10,7 @@ namespace Domain.Interface
     public interface IProjectCategoryRepository
     {
         Task<List<ProjectCategory>> GetProjectCategoryList(string search);
+        Task<List<ProjectCategory>> GetProjectCategoryList();
         Task<List<ProjectCategory>> GetDeletedProjectCategoryList(string search);
         Task<ProjectCategory> GetProjectCategoryById(int categoryId);
         Task<ProjectCategory> GetDeletedProjectCategoryById(int categoryId);

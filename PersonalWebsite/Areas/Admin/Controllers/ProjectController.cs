@@ -1,6 +1,7 @@
 ﻿using Application.Interface;
 using Application.ViewModel.ProjectViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,11 @@ namespace PersonalWebsite.Areas.Admin.Controllers
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;
-        public ProjectController(IProjectService projectService)
+        private readonly IProjectCategoryService _projectCategoryService;
+        public ProjectController(IProjectService projectService,IProjectCategoryService projectCategoryService)
         {
             _projectService = projectService;
+            _projectCategoryService = projectCategoryService;
         }
         [HttpGet]
         [Route("/Admin/Projects/{search?}")]
@@ -28,6 +31,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         [Route("/Admin/CreateProject")]
         public IActionResult CreateProject()
         {
+            GetCategories();
             return View();
         }
 
@@ -42,6 +46,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
             }
             else
             {
+                GetCategories();
                 return View(model);
             }
         }
@@ -51,6 +56,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         public IActionResult EditProject(int id)
         {
             var model = _projectService.GetProjectById(id).Result;
+            GetCategories();
             return View(model);
         }
 
@@ -65,6 +71,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
             }
             else
             {
+                GetCategories();
                 return View(model);
             }
         }
@@ -73,6 +80,11 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         public void DeleteProject(int id)
         {
             _projectService.DeleteProject(id);
+        }
+        public void GetCategories()
+        {
+            var categories = _projectCategoryService.GetProjectCategoryList().Result;
+            ViewData["Categories"] = new SelectList(categories, "CategoryId", "CategoryTitle");
         }
     }
 }

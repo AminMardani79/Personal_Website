@@ -20,8 +20,6 @@ namespace Application.ViewModel.ProjectViewModel
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(250, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string ProjectDescription { get; set; }
-        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public IFormFile ImageFile { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]

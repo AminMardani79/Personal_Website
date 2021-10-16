@@ -58,6 +58,7 @@ namespace Application.Services
             model.ProjectDescription = project.ProjectDescription;
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
+            model.CategoryId = project.CategoryId;
             if (project.ImageFile != null)
             {
                 bool checkImage = project.ImageFile.IsImage();
@@ -79,6 +80,8 @@ namespace Application.Services
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
             model.ProjectId = project.ProjectId;
+            model.CategoryId = project.CategoryId;
+            model.ProjectImage = project.ProjectImage;
             return model;
         }
 
@@ -96,7 +99,8 @@ namespace Application.Services
                     ProjectSubTitle = project.ProjectSubTitle,
                     ProjectTitle = project.ProjectTitle,
                     ProjectImage = project.ProjectImage,
-                    CategoryId = project.CategoryId
+                    CategoryId = project.CategoryId,
+                    CategoryTitle = project.ProjectCategory.CategoryTitle
                 });
             }
             return Tuple.Create(models, pagesCount, pageNumber);
