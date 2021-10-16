@@ -61,7 +61,9 @@ namespace Application.Services
                     MessageTitle = message.MessageTitle,
                     UserEmail = message.UserEmail,
                     UserName = message.UserName,
-                    UserNumber = message.UserNumber
+                    UserNumber = message.UserNumber,
+                    MessageId = message.MessageId,
+                    MessageDesc = message.MessageDescription
                 });
             }
             return Tuple.Create(models,pagesCount,pageNumber);
