@@ -49,5 +49,10 @@ namespace Data.Repository
             _context.Update(work);
             Save();
         }
+
+        public async Task<IEnumerable<DoWork>> ShowDoWorks()
+        {
+            return await _context.DoWorks.OrderByDescending(o => o.DoWorkId).ToListAsync();
+        }
     }
 }

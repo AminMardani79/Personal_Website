@@ -14,11 +14,7 @@ namespace Domain.Models
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(50, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(50, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string UserEmail { get; set; }
-        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(50, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string UserNumber { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(30, ErrorMessage = "طول این رشته بیش از حد مجاز است")]

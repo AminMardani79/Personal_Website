@@ -1,0 +1,84 @@
+﻿@model CreateContactMessageViewModel
+<div class="container">
+    <div class="title">
+        <h3>ارتباط با من.</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-xl-4 m-15px-tb">
+            <div class="contact-info">
+                <h4 class="primary-font">با من در ارتباط باشید</h4>
+                <p>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                    است.
+                </p>
+                <ul>
+                    <li class="media">
+                        <i class="ti-map"></i>
+                        <span class="media-body">
+                            تبریز، چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه
+                            567
+                        </span>
+                    </li>
+                    <li class="media">
+                        <i class="ti-email"></i>
+                        <span class="media-body">support@domain.com</span>
+                    </li>
+                    <li class="media">
+                        <i class="ti-mobile"></i>
+                        <span class="media-body ltr-text">+98 9696 3636</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-7 col-xl-8 m-15px-tb">
+            <div class="contact-form">
+                <h4>چیزی بگویید</h4>
+                <form id="contact-form" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="Name" id="name" placeholder="نام *" class="form-control"
+                                       type="text">
+                                <div id="val_user_name" class="invalid-feedback d-block"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="Email" id="email" placeholder="( اختیاری ) ایمیل" class="form-control"
+                                       type="email" dir="ltr">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input name="Number" id="number" placeholder="شماره ( اختیاری )" class="form-control"
+                                       type="number">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input name="Subject" id="subject" placeholder="موضوع *"
+                                       class="form-control" type="text">
+                                <div id="val_subject" class="invalid-feedback d-block"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea name="message" id="message" placeholder="پیام شما *" rows="4"
+                                          class="form-control"></textarea>
+                                <div id="val_message" class="invalid-feedback d-block"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="send">
+                                <button class="px-btn px-btn-theme" onclick="send_mail()"
+                                        type="button">
+                                    ارسال پیام
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

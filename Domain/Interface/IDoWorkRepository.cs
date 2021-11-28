@@ -15,5 +15,7 @@ namespace Domain.Interface
         void DeleteDoWork(DoWork work);
         void UpdateDoWork(DoWork work);
         void Save();
+
+        Task<IEnumerable<DoWork>> ShowDoWorks();
     }
 }

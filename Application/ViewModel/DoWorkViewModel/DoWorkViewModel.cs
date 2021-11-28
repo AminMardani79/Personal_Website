@@ -12,5 +12,7 @@ namespace Application.ViewModel.DoWorkViewModel
         public int DoWorkId { get; set; }
         public string DoWorkTitle { get; set; }
         public string DoWorkImage { get; set; }
+        public string DoWorkDesc { get; set; } 
+
     }
 }

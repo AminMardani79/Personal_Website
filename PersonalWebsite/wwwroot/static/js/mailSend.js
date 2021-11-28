@@ -1,9 +1,10 @@
-function send_mail() {
-    var name = jQuery("#name").val();
-    var email = jQuery("#email").val();
-    var subject = jQuery("#subject").val();
-    var message = jQuery("#message").val();
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+﻿function send_mail() {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var number = $("#number").val();
+    var subject = $("#subject").val();
+    var message = $("#message").val();
+
     var flag = 0;
 
     if (name == "") {
@@ -13,19 +14,6 @@ function send_mail() {
     } else {
         jQuery("#name").removeClass('invalid');
         jQuery("#val_user_name").html("");
-    }
-
-    if (email == "") {
-        jQuery("#email").addClass('invalid');
-        jQuery("#val_user_email").html("وارد کردن ایمیل الزامی است");
-        flag = 1;
-    } else if (!email.match(mailformat)) {
-        jQuery("#email").addClass('invalid');
-        jQuery("#val_user_email").html("لطفا یک ایمیل معتبر وارد کنید");
-        flag = 1;
-    } else {
-        jQuery("#email").removeClass('invalid');
-        jQuery("#val_user_email").html("");
     }
 
     if (subject == "") {
@@ -52,7 +40,6 @@ function send_mail() {
 
     var data = {
         "name": name,
-        "email": email,
         "subject": subject,
         "message": message,
     };

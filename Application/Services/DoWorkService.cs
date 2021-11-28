@@ -93,5 +93,22 @@ namespace Application.Services
             }
             return Tuple.Create(models, pagesCount, pageNumber);
         }
+
+        public async Task<IEnumerable<DoWorkViewModel>> ShowDoWorks()
+        {
+            var doWorks = await _doWorkRepository.ShowDoWorks();
+            var list = new List<DoWorkViewModel>();
+            foreach (var item in doWorks)
+            {
+                list.Add(new DoWorkViewModel()
+                {
+                    DoWorkId = item.DoWorkId,
+                    DoWorkImage = item.DoWorkImage,
+                    DoWorkTitle = item.DoWorkTitle,
+                    DoWorkDesc = item.DoWorkDesc
+                });
+            }
+            return list;
+        }
     }
 }

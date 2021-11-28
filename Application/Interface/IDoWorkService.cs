@@ -14,5 +14,8 @@ namespace Application.Interface
         void CreateDoWork(CreateDoWorkViewModel doWork);
         void EditDoWork(EditDoWorkViewModel doWork);
         void DeleteDoWork(int doWorkId);
+
+
+        Task<IEnumerable<DoWorkViewModel>> ShowDoWorks();
     }
 }

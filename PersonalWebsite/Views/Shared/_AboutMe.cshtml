@@ -1,0 +1,40 @@
+﻿@model EditAboutMeViewModel
+<div class="about-info">
+    <div class="title">
+        <h3>درباره من.</h3>
+    </div>
+    <div class="about-text">
+        <h3 class="primary-font">
+            @Model.AboutMeDes
+        </h3>
+        <p>
+            @Model.AboutMeContext
+        </p>
+        <div class="row">
+            <div class="col-auto">
+                <div class="media align-items-center">
+                    <span class="count">
+                        @Model.ProjectsCount
+                    </span>
+                    <div class="media-body">
+                        پروژه های تمام شده.
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="media align-items-center">
+                    <span class="count">
+                        @Model.CustomerCount
+                    </span>
+                    <div class="media-body">
+                        مشتریان راضی.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-bar">
+            <a class="px-btn px-btn-theme" href="#contactus"><span>با من تماس بگیرید</span></a>
+            <a class="px-btn px-btn-theme" href="#work"><span>نمونه‌کارها</span></a>
+        </div>
+    </div>
+</div>
