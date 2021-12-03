@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SkillDetailViewModel>
+@foreach(var item in Model){
+    <div class="skill-lt">
+    <h6 class="primary-font">@item.SkillTitle</h6>
+    <div class="skill-bar">
+        <div class="skill-bar-in" style="width: @item.SkillPercent%;">
+            <span data-toggle="tooltip" title="@item.SkillPercent%"></span>
+        </div>
+    </div>
+</div><!-- /skill -->
+}

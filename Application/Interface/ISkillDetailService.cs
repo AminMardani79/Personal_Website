@@ -14,5 +14,7 @@ namespace Application.Interface
         void CreateSkillDetail(CreateSkillDetailViewModel skill);
         void EditSkillDetail(EditSkillDetailViewModel skill);
         void DeleteSkillDetail(int skillId);
+
+        Task<IEnumerable<SkillDetailViewModel>> ShowSkillDetails();
     }
 }

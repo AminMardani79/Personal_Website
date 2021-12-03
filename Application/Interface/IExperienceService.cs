@@ -14,5 +14,6 @@ namespace Application.Interface
         void CreateExperience(CreateExperienceViewModel experience);
         void EditExperience(EditExperienceViewModel experience);
         void DeleteExperience(int experienceId);
+        Task<IEnumerable<ExperienceViewModel>> ShowExperiences();
     }
 }

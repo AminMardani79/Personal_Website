@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ExperienceViewModel>
+@foreach (var item in Model)
+{
+    <div class="resume-row">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-xl-2">
+                <div class="rb-left">
+                    <img src="/image/@item.Image" title="" alt="">
+                </div>
+            </div>
+            <div class="col-sm-9 col-md-9 col-xl-10">
+                <div class="rb-right">
+                    <h6 class="primary-font">@item.ExperienceTitle</h6>
+                    <label>@item.GroupName | @item.Date</label>
+                    <div class="rb-time">@item.ExperienceType</div>
+                    <p>
+                        @item.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

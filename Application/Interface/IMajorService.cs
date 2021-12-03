@@ -14,5 +14,6 @@ namespace Application.Interface
         void CreateMajor(CreateMajorViewModel major);
         void EditMajor(EditMajorViewModel major);
         void DeleteMajor(int majorId);
+        Task<IEnumerable<MajorViewModel>> ShowMajors();
     }
 }

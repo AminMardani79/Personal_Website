@@ -49,5 +49,9 @@ namespace Data.Repository
             _context.Update(skillDetail);
             Save();
         }
+        public async Task<IEnumerable<SkillDetail>> ShowSkillDetails()
+        {
+            return await _context.SkillDetails.OrderBy(s => s.SkillDetailId).ToListAsync();
+        }
     }
 }

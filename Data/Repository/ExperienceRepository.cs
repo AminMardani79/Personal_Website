@@ -49,5 +49,9 @@ namespace Data.Repository
             _context.Update(experience);
             Save();
         }
+        public async Task<IEnumerable<Experience>> ShowExperiences()
+        {
+            return await _context.Experiences.OrderByDescending(e => e.ExperienceId).ToListAsync();
+        }
     }
 }

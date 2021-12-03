@@ -26,14 +26,11 @@ namespace Application.Services
             if(doWork.DoWorkImage != null)
             {
                 bool check = doWork.DoWorkImage.IsImage();
-                if (check)
+                model.DoWorkImage = check switch
                 {
-                    model.DoWorkImage = ImageConvertor.SaveImage(doWork.DoWorkImage);
-                }
-                else
-                {
-                    model.DoWorkImage = "default.png";
-                }
+                    true => ImageConvertor.SaveImage(doWork.DoWorkImage),
+                    false => "default.png"
+                };
             }
             else
             {
@@ -100,7 +97,7 @@ namespace Application.Services
             var list = new List<DoWorkViewModel>();
             foreach (var item in doWorks)
             {
-                list.Add(new DoWorkViewModel()
+                list.Add(new()
                 {
                     DoWorkId = item.DoWorkId,
                     DoWorkImage = item.DoWorkImage,

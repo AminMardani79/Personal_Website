@@ -15,5 +15,6 @@ namespace Domain.Interface
         void DeleteMajor(Major major);
         void UpdateMajor(Major major);
         void Save();
+        Task<IEnumerable<Major>> ShowMajors();
     }
 }

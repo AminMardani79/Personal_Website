@@ -54,129 +54,14 @@
         </div>
         <div class="row">
             <div class="col-lg-4 m-15px-tb">
-                <ul class="aducation-box">
-                    <li>
-                        <span>1396-1398</span>
-                        <h6 class="primary-font">طراحی گرافیک</h6>
-                        <p>موسسه بین المللی طراحی</p>
-                    </li>
-                    <li>
-                        <span>1396-1398</span>
-                        <h6 class="primary-font">توسعه وب</h6>
-                        <p>موسسه بین المللی طراحی</p>
-                    </li>
-                    <li>
-                        <span>1396-1398</span>
-                        <h6 class="primary-font">بهینه سازی موتور جستجو</h6>
-                        <p>موسسه بین المللی طراحی</p>
-                    </li>
-                </ul>
+                @await Component.InvokeAsync("Major")
             </div>
             <div class="col-lg-7 ml-auto m-15px-tb">
                 <div class="skills-box">
                     <h3>مهارت های من</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                        است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
-                        فعلی تکنولوژی مورد نیاز
-                    </p>
+                    @await Component.InvokeAsync("SkillDesc")
                     <div class="skill-section">
-                        <div class="skill-lt">
-                            <h6 class="primary-font">HTML5</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 92%;">
-                                    <span data-toggle="tooltip" title="92%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">Css3</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 72%;">
-                                    <span data-toggle="tooltip" title="72%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">JavaScript</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 86%;">
-                                    <span data-toggle="tooltip" title="86%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">BootStrap</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">JQuery</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">Sass</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">Vue js</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">C#</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">Asp.net Core</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">EfCore</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">SignalR</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
-                        <div class="skill-lt">
-                            <h6 class="primary-font">Git</h6>
-                            <div class="skill-bar">
-                                <div class="skill-bar-in" style="width: 88%;">
-                                    <span data-toggle="tooltip" title="88%"></span>
-                                </div>
-                            </div>
-                        </div><!-- /skill -->
+                        @await Component.InvokeAsync("SkillDetail")
                     </div>
                 </div>
             </div>
@@ -186,72 +71,7 @@
             <h3>تجربه ها.</h3>
         </div>
         <div class="resume-box">
-            <div class="resume-row">
-                <div class="row">
-                    <div class="col-sm-3 col-md-3 col-xl-2">
-                        <div class="rb-left">
-                            <img src="/static/img/a1.png" title="" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-9 col-md-9 col-xl-10">
-                        <div class="rb-right">
-                            <h6 class="primary-font">توسعه دهنده رابط کاربری</h6>
-                            <label>شرکت مایکروسافت | دورکار | 1398 تا کنون</label>
-                            <div class="rb-time">تمام وقت</div>
-                            <p>
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                کاربردی می باشد. کتابهای
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="resume-row">
-                <div class="row">
-                    <div class="col-sm-3 col-md-3 col-xl-2">
-                        <div class="rb-left">
-                            <img src="/static/img/a2.png" title="" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-9 col-md-9 col-xl-10">
-                        <div class="rb-right">
-                            <h6 class="primary-font">توسعه دهنده رابط کاربری</h6>
-                            <label>شرکت مایکروسافت | دورکار | 1398 تا کنون</label>
-                            <div class="rb-time">تمام وقت</div>
-                            <p>
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                کاربردی می باشد. کتابهای
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="resume-row">
-                <div class="row">
-                    <div class="col-sm-3 col-md-3 col-xl-2">
-                        <div class="rb-left">
-                            <img src="/static/img/a3.png" title="" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-9 col-md-9 col-xl-10">
-                        <div class="rb-right">
-                            <h6 class="primary-font">توسعه دهنده رابط کاربری</h6>
-                            <label>شرکت مایکروسافت | دورکار | 1398 تا کنون</label>
-                            <div class="rb-time">تمام وقت</div>
-                            <p>
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                کاربردی می باشد. کتابهای
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @await Component.InvokeAsync("Experience")
         </div>
     </div>
 </section>

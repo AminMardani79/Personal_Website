@@ -76,5 +76,22 @@ namespace Application.Services
             }
             return Tuple.Create(models, pagesCount, pageNumber);
         }
+        public async Task<IEnumerable<MajorViewModel>> ShowMajors()
+        {
+            var majors = await _majorRepository.ShowMajors();
+            var vModel = new List<MajorViewModel>();
+            foreach (var major in majors)
+            {
+                vModel.Add(new MajorViewModel()
+                {
+                    MajorId = major.MajorId,
+                    MajorTitle = major.MajorTitle,
+                    MajorSubTitle = major.MajorSubTitle,
+                    MajorStart = major.MajorStart,
+                    MajorEnd = major.MajorEnd
+                });
+            }
+            return vModel;
+        }
     }
 }

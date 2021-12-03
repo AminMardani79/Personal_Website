@@ -50,5 +50,9 @@ namespace Data.Repository
             _context.Update(major);
             Save();
         }
+        public async Task<IEnumerable<Major>> ShowMajors()
+        {
+            return await _context.Majors.OrderByDescending(m => m.MajorId).ToListAsync();
+        }
     }
 }

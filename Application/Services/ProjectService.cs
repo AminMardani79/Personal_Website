@@ -20,28 +20,18 @@ namespace Application.Services
         }
         public void CreateProject(CreateProjectViewModel project)
         {
+            bool check = project.ImageFile.IsImage();
             Project model = new Project();
             model.DownloadLink = project.DownloadLink;
             model.ProjectDescription = project.ProjectDescription;
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
             model.CategoryId = project.CategoryId;
-            if (project.ImageFile != null)
+            model.ProjectImage = project.ImageFile switch
             {
-                bool check = project.ImageFile.IsImage();
-                if (check)
-                {
-                    model.ProjectImage = ImageConvertor.SaveImage(project.ImageFile);
-                }
-                else
-                {
-                    model.ProjectImage = "default.png";
-                }
-            }
-            else
-            {
-                model.ProjectImage = "default.png";
-            }
+                null => "default.png",
+                _ => check ? ImageConvertor.SaveImage(project.ImageFile) : "default.png"
+            };
             _projectRepository.CreateProject(model);
         }
 

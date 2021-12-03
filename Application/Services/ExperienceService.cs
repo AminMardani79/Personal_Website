@@ -20,24 +20,18 @@ namespace Application.Services
         }
         public void CreateExperience(CreateExperienceViewModel experience)
         {
+            bool imageCheck = experience.ImageFile.IsImage();
             Experience model = new Experience();
             model.Date = experience.Date;
             model.Description = experience.Description;
             model.ExperienceTitle = experience.ExperienceTitle;
             model.ExperienceType = experience.ExperienceType;
             model.GroupName = experience.GroupName;
-            if(experience.ImageFile != null)
+            model.Image = experience.ImageFile switch
             {
-                bool imageCheck = experience.ImageFile.IsImage();
-                if (imageCheck)
-                {
-                    model.Image = ImageConvertor.SaveImage(experience.ImageFile);
-                }
-            }
-            else
-            {
-                model.Image = "default.png";
-            }
+                null => "default.png",
+                _ => imageCheck ? ImageConvertor.SaveImage(experience.ImageFile) : null
+            };
             _experienceRepository.CreateExperience(model);
         }
 
@@ -100,6 +94,23 @@ namespace Application.Services
                 });
             }
             return Tuple.Create(models, pagesCount, pageNumber);
+        }
+        public async Task<IEnumerable<ExperienceViewModel>> ShowExperiences()
+        {
+            var experiences = await _experienceRepository.ShowExperiences();
+            var list = new List<ExperienceViewModel>();
+            foreach (var item in experiences)
+            {
+                list.Add(new()
+                {
+                    ExperienceType = item.ExperienceType,
+                    ExperienceTitle = item.ExperienceTitle,
+                    Date = item.Date,
+                    GroupName = item.GroupName,
+                    Image = item.Image
+                });
+            }
+            return list;
         }
     }
 }

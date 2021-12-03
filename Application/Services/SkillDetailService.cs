@@ -72,5 +72,22 @@ namespace Application.Services
             }
             return Tuple.Create(models, pagesCount, pageNumber);
         }
+
+        public async Task<IEnumerable<SkillDetailViewModel>> ShowSkillDetails()
+        {
+            var details = await _skillDetailRepository.ShowSkillDetails();
+            var list = new List<SkillDetailViewModel>();
+            foreach (var item in details)
+            {
+                list.Add(new()
+                {
+                    SkillDetailId = item.SkillDetailId,
+                    SkillId = item.SkillId,
+                    SkillTitle = item.SkillTitle,
+                    SkillPercent = item.SkillPercent
+                });
+            }
+            return list;
+        }
     }
 }

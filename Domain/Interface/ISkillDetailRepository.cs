@@ -15,5 +15,7 @@ namespace Domain.Interface
         void DeleteSkillDetail(SkillDetail skillDetail);
         void UpdateSkillDetail(SkillDetail skillDetail);
         void Save();
+
+        Task<IEnumerable<SkillDetail>> ShowSkillDetails();
     }
 }

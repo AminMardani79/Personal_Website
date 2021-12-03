@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MajorViewModel>
+<ul class="aducation-box">
+    @foreach (var item in Model)
+    {
+        <li>
+            <span>@item.MajorStart-@item.MajorEnd</span>
+            <h6 class="primary-font">@item.MajorTitle</h6>
+            <p>@item.MajorSubTitle</p>
+        </li>
+    }
+</ul>
