@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Data.ApplicationContext
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
@@ -23,6 +23,7 @@ namespace Data.ApplicationContext
         public DbSet<Major> Majors { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectCategory> ProjectCategorys { get; set; }
+        public DbSet<CategoryProject> CategoryProjects { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<SkillDetail> SkillDetails { get; set; }
 
@@ -33,6 +34,21 @@ namespace Data.ApplicationContext
             {
                 mutableForeignKey.DeleteBehavior = DeleteBehavior.Cascade;
             }
+
+            #region ManyToMany
+
+            modelBuilder.Entity<CategoryProject>()
+        .HasKey(bc => new { bc.CategoryId, bc.ProjectId });
+            modelBuilder.Entity<CategoryProject>()
+                .HasOne(bc => bc.Project)
+                .WithMany(b => b.CategoryProjects)
+                .HasForeignKey(bc => bc.ProjectId);
+            modelBuilder.Entity<CategoryProject>()
+                .HasOne(bc => bc.ProjectCategory)
+                .WithMany(c => c.CategoryProjects)
+                .HasForeignKey(bc => bc.CategoryId);
+
+            #endregion
 
             #region QueryFilters
 

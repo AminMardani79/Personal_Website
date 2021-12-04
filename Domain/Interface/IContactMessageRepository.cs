@@ -13,6 +13,8 @@ namespace Domain.Interface
         Task<ContactMessage> GetMessageById(int messageId);
         void CreateMessage(ContactMessage message);
         void DeleteMessage(ContactMessage message);
+        void AttachMessage(ContactMessage message);
         void Save();
+        Task<IEnumerable<ContactMessage>> ShowActiveMessages(); 
     }
 }

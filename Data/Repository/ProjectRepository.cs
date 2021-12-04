@@ -36,7 +36,7 @@ namespace Data.Repository
 
         public async Task<IEnumerable<Project>> GetProjectsList(string search, int skip, int take)
         {
-            return await _context.Projects.Include(p=> p.ProjectCategory).Where(p => EF.Functions.Like(p.ProjectTitle, $"%{search}%")).Skip(skip).Take(take).ToListAsync();
+            return await _context.Projects.Where(p => EF.Functions.Like(p.ProjectTitle, $"%{search}%")).Skip(skip).Take(take).ToListAsync();
         }
 
         public void Save()

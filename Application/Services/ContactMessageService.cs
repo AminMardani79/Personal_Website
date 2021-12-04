@@ -34,6 +34,12 @@ namespace Application.Services
             var message = _contactMessageRepository.GetMessageById(messageId).Result;
             _contactMessageRepository.DeleteMessage(message);
         }
+        public async Task AttachMessage(int messageId)
+        {
+            var message = await _contactMessageRepository.GetMessageById(messageId);
+            message.IsShowing = !message.IsShowing;
+            _contactMessageRepository.AttachMessage(message);
+        }
 
         public async Task<EditContactMessageViewModel> GetMessageById(int messageId)
         {
@@ -63,10 +69,26 @@ namespace Application.Services
                     UserName = message.UserName,
                     UserNumber = message.UserNumber,
                     MessageId = message.MessageId,
-                    MessageDesc = message.MessageDescription
+                    MessageDesc = message.MessageDescription,
+                    IsShowing = message.IsShowing
                 });
             }
             return Tuple.Create(models,pagesCount,pageNumber);
+        }
+        public async Task<IEnumerable<ContactMessageViewModel>> ShowActiveMessages()
+        {
+            var messages = await _contactMessageRepository.ShowActiveMessages();
+            var list = new List<ContactMessageViewModel>();
+            foreach (var message in messages)
+            {
+                list.Add(new()
+                {
+                    MessageTitle = message.MessageTitle,
+                    UserName = message.UserName,
+                    MessageDesc = message.MessageDescription
+                });
+            }
+            return list;
         }
     }
 }

@@ -28,10 +28,7 @@ namespace Domain.Models
         [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string DownloadLink { get; set; }
 
-        public int CategoryId { get; set; }
-        [ForeignKey("CategoryId")]
-        public ProjectCategory ProjectCategory { get; set; }
-
+        public IEnumerable<CategoryProject> CategoryProjects { get; set; }
 
     }
 }

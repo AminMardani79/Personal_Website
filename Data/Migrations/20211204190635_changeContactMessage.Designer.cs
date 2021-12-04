@@ -3,14 +3,16 @@ using Data.ApplicationContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211204190635_changeContactMessage")]
+    partial class changeContactMessage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,21 +46,6 @@ namespace Data.Migrations
                     b.HasKey("AboutMeId");
 
                     b.ToTable("AboutMe");
-                });
-
-            modelBuilder.Entity("Domain.Models.CategoryProject", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryId", "ProjectId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("CategoryProjects");
                 });
 
             modelBuilder.Entity("Domain.Models.ContactDetail", b =>
@@ -247,6 +234,9 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("DownloadLink")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -273,6 +263,8 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("ProjectId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Projects");
                 });
@@ -339,21 +331,13 @@ namespace Data.Migrations
                     b.ToTable("SkillDetails");
                 });
 
-            modelBuilder.Entity("Domain.Models.CategoryProject", b =>
+            modelBuilder.Entity("Domain.Models.Project", b =>
                 {
                     b.HasOne("Domain.Models.ProjectCategory", "ProjectCategory")
-                        .WithMany("CategoryProjects")
+                        .WithMany("Projects")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Domain.Models.Project", "Project")
-                        .WithMany("CategoryProjects")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
 
                     b.Navigation("ProjectCategory");
                 });
@@ -369,14 +353,9 @@ namespace Data.Migrations
                     b.Navigation("Skill");
                 });
 
-            modelBuilder.Entity("Domain.Models.Project", b =>
-                {
-                    b.Navigation("CategoryProjects");
-                });
-
             modelBuilder.Entity("Domain.Models.ProjectCategory", b =>
                 {
-                    b.Navigation("CategoryProjects");
+                    b.Navigation("Projects");
                 });
 
             modelBuilder.Entity("Domain.Models.Skill", b =>

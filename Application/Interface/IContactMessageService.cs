@@ -14,5 +14,7 @@ namespace Application.Interface
         Task<EditContactMessageViewModel> GetMessageById(int messageId);
         void CreateMessage(CreateContactMessageViewModel message);
         void DeleteMessage(int messageId);
+        Task AttachMessage(int messageId);
+        Task<IEnumerable<ContactMessageViewModel>> ShowActiveMessages();
     }
 }

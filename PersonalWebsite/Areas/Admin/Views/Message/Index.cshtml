@@ -14,6 +14,9 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
+                                    نمایش
+                                </th>
+                                <th class="text-center">
                                     نام فرستنده
                                 </th>
                                 <th class="text-center">
@@ -34,6 +37,9 @@
                             @foreach (var item in Model.Item1)
                             {
                                 <tr id="item_@item.MessageId">
+                                    <td class="text-center">
+                                        <input type="checkbox" checked="@item.IsShowing" class="show_message" id="@item.MessageId">
+                                    </td>
                                     <td class="text-center">@item.UserName</td>
                                     <td class="text-center">@item.MessageTitle</td>
                                     <td class="text-center">@item.UserNumber</td>
@@ -64,6 +70,20 @@
 </div>
 @section Scripts{
     <script>
+        const checkboxes = $(".show_message");
+        checkboxes.change((e)=>{
+            $.ajax({
+                type : "Get",
+                url : "/ShowMessage",
+                data : {id : e.target.id},
+                success :()=>{
+                    console.log("success");
+                },
+                error : (e)=>{
+                    console.log(e);
+                }
+            });
+        });
         function RemoveMessage(id) {
             Swal.fire({
                 title: 'آیا از حذف پیام اطمینان دارید ؟',

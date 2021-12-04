@@ -37,5 +37,10 @@ namespace PersonalWebsite.Controllers
                 _contactMessageService.CreateMessage(model);
             }
         }
+        [Route("/ShowMessage")]
+        public async Task ShowMessage(int id)
+        {
+           await _contactMessageService.AttachMessage(id);
+        }
     }
 }

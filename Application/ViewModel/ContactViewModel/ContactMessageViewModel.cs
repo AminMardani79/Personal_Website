@@ -15,5 +15,6 @@ namespace Application.ViewModel.ContactViewModel
         public string UserNumber { get; set; }
         public string MessageTitle { get; set; }
         public string MessageDesc { get; set; }
+        public bool IsShowing { get; set; }
     }
 }

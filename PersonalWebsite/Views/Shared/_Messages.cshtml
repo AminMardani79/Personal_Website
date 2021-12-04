@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ContactMessageViewModel>
+@foreach (var item in Model)
+{
+    <div class="testimonial-01 media">
+        <div class="avatar">
+            <img src="/static/img/team-1.jpg" title="" alt="">
+        </div>
+        <div class="media-body">
+            <p>
+                @item.MessageDesc
+            </p>
+            <h6 class="primary-font">@item.UserName</h6>
+        </div>
+    </div>
+
+}

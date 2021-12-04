@@ -22,6 +22,7 @@ namespace Domain.Models
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(500, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string MessageDescription { get; set; }
+        public bool IsShowing { get; set; } = false;
 
     }
 }
