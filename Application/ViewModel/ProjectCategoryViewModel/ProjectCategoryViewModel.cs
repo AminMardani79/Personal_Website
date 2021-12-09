@@ -11,6 +11,7 @@ namespace Application.ViewModel.ProjectCategoryViewModel
     {
         public int CategoryId { get; set; }
         public string CategoryTitle { get; set; }
+        public string CategoryFilter { get; set; }
         public bool IsCategoryDelete { get; set; }
     }
 }

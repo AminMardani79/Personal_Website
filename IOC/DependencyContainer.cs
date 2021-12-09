@@ -26,6 +26,7 @@ namespace IOC
             service.AddScoped<IProjectCategoryRepository,ProjectCategoryRepository>();
             service.AddScoped<ISkillDetailRepository,SkillDetailRepository>();
             service.AddScoped<ISkillRepository,SkillRepository>();
+            service.AddScoped<ICategoryProjectRepository,CategoryProjectRepository>();
 
             // Services
             service.AddScoped<IAboutService, AboutService>();
@@ -38,6 +39,7 @@ namespace IOC
             service.AddScoped<IProjectCategoryService, ProjectCategoryService>();
             service.AddScoped<ISkillDetailService, SkillDetailService>();
             service.AddScoped<ISkillService, SkillService>();
+            service.AddScoped<ICategoryProjectService, CategoryProjectService>();
         }
     }
 }

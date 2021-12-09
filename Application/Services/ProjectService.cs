@@ -1,5 +1,6 @@
 ﻿using Application.Interface;
 using Application.Others;
+using Application.ViewModel.ProjectCategoryViewModel;
 using Application.ViewModel.ProjectViewModel;
 using Domain.Interface;
 using Domain.Models;
@@ -14,27 +15,33 @@ namespace Application.Services
     public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;
-        public ProjectService(IProjectRepository projectRepository)
+        private readonly ICategoryProjectRepository _categoryProjectRepository;
+
+        public ProjectService(IProjectRepository projectRepository,ICategoryProjectRepository categoryProjectRepository)
         {
             _projectRepository = projectRepository;
+            _categoryProjectRepository = categoryProjectRepository;
         }
         public void CreateProject(CreateProjectViewModel project)
         {
-            bool check = project.ImageFile.IsImage();
+            bool check = false;
+            if (project.ImageFile is not null)
+            {
+                check = project.ImageFile.IsImage();
+            }
             Project model = new Project();
             model.DownloadLink = project.DownloadLink;
             model.ProjectDescription = project.ProjectDescription;
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
-            // model.CategoryId = project.CategoryId;
             model.ProjectImage = project.ImageFile switch
             {
                 null => "default.png",
                 _ => check ? ImageConvertor.SaveImage(project.ImageFile) : "default.png"
             };
             _projectRepository.CreateProject(model);
+            BuilCategoryProject(project.CategoryItems,model);
         }
-
         public void DeleteProject(int projectId)
         {
             var model = _projectRepository.GetProjectById(projectId).Result;
@@ -44,11 +51,11 @@ namespace Application.Services
         public void EditProject(EditProjectViewModel project)
         {
             var model = _projectRepository.GetProjectById(project.ProjectId).Result;
+            var cpModel = _categoryProjectRepository.GetCategoryProjectsById(project.ProjectId).Result;
             model.DownloadLink = project.DownloadLink;
             model.ProjectDescription = project.ProjectDescription;
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
-            //model.CategoryId = project.CategoryId;
             if (project.ImageFile != null)
             {
                 bool checkImage = project.ImageFile.IsImage();
@@ -59,6 +66,8 @@ namespace Application.Services
                 }
             }
             _projectRepository.UpdateProject(model);
+            _categoryProjectRepository.RemoveAll(cpModel);
+            BuilCategoryProject(project.CategoryItems,model);
         }
 
         public async Task<EditProjectViewModel> GetProjectById(int projectId)
@@ -70,7 +79,6 @@ namespace Application.Services
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
             model.ProjectId = project.ProjectId;
-            //model.CategoryId = project.CategoryId;
             model.ProjectImage = project.ProjectImage;
             return model;
         }
@@ -80,20 +88,50 @@ namespace Application.Services
             int skip = (pageNumber - 1) * take;
             var projectList = _projectRepository.GetProjectsList(search, skip, take).Result;
             int pagesCount = PagesCount.PageCount(projectList.Count(), take);
-            List<ProjectViewModel> models = new List<ProjectViewModel>();
+            var models = new List<ProjectViewModel>();
             foreach (var project in projectList)
             {
+                var categoryModels = new List<ProjectCategoryViewModel>();
+                var categories = _categoryProjectRepository.GetCategoryProjectsById(project.ProjectId).Result;
+                foreach (var category in categories)
+                {
+                    categoryModels.Add(new ProjectCategoryViewModel
+                    {
+                        CategoryTitle = category.ProjectCategory.CategoryTitle
+                    });
+                }
                 models.Add(new ProjectViewModel()
                 {
                     ProjectId = project.ProjectId,
                     ProjectSubTitle = project.ProjectSubTitle,
                     ProjectTitle = project.ProjectTitle,
                     ProjectImage = project.ProjectImage,
-                    //CategoryId = project.CategoryId,
-                    //CategoryTitle = project.ProjectCategory.CategoryTitle
+                    Categories = categoryModels
                 });
             }
             return Tuple.Create(models, pagesCount, pageNumber);
         }
+
+
+        #region Private Methods
+
+        private void BuilCategoryProject(List<int> CategoryItems, Project model)
+        {
+            if (CategoryItems.Count is not 0)
+            {
+                var cpModels = new List<CategoryProject>();
+                foreach (var item in CategoryItems)
+                {
+                    cpModels.Add(new()
+                    {
+                        ProjectId = model.ProjectId,
+                        CategoryId = item
+                    });
+                }
+                _categoryProjectRepository.CreateCPModels(cpModels);
+            }
+        }
+
+        #endregion
     }
 }

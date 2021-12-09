@@ -1,6 +1,8 @@
 ﻿@model EditProjectViewModel
 @{
     ViewData["Title"] = "ویرایش پروژه";
+    IEnumerable<ProjectCategoryViewModel> models = ViewBag.Categories as List<ProjectCategoryViewModel>;
+    List<int> selected = ViewBag.Selected as List<int>;
 }
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
@@ -9,12 +11,13 @@
                 <div class="d-flex justify-content-between">
                     <h6 class="card-title">ویرایش پروژه</h6>
                     <a href="/Admin/Projects">
-                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                        بازگشت
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
                     </a>
                 </div>
                 <form asp-controller="Project" asp-action="EditProject" method="post" enctype="multipart/form-data">
-                    <input type="hidden" asp-for="ProjectId"/>
-                    <input type="hidden" asp-for="ProjectImage"/>
+                    <input type="hidden" asp-for="ProjectId" />
+                    <input type="hidden" asp-for="ProjectImage" />
                     <div class="form-group">
                         <label for="exampleInputText1">تصویر</label>
                         <input type="file" asp-for="ImageFile" />
@@ -31,7 +34,19 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputText1">دسته بندی</label>
-                        <select asp-for="CategoryId" asp-items="@ViewBag.Categories"></select>
+                        <select asp-for="CategoryItems" multiple>
+                            @foreach (var item in models)
+                            {
+                                @if (selected.Any(a => a.Equals(item.CategoryId)))
+                                {
+                                    <option value="@item.CategoryId" selected>@item.CategoryTitle</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.CategoryId">@item.CategoryTitle</option>
+                                }
+                            }
+                        </select>
                         <span asp-validation-for="ProjectSubTitle" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -51,5 +66,7 @@
     </div>
 </div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

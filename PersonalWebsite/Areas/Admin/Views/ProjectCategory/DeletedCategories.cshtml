@@ -61,7 +61,7 @@
                 cancelButtonText: 'خیر'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $.get("/Admin/AddCategoryToTrashList/" + id)
+                    $.get("/Admin/DeleteCategory/" + id)
                         .done(function () {
                             Swal.fire(
                                 'حذف شد',

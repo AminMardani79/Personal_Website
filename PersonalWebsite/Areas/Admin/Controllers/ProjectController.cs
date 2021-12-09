@@ -14,10 +14,13 @@ namespace PersonalWebsite.Areas.Admin.Controllers
     {
         private readonly IProjectService _projectService;
         private readonly IProjectCategoryService _projectCategoryService;
-        public ProjectController(IProjectService projectService,IProjectCategoryService projectCategoryService)
+        private readonly ICategoryProjectService _categoryProjectService;
+
+        public ProjectController(IProjectService projectService, IProjectCategoryService projectCategoryService, ICategoryProjectService categoryProjectService)
         {
             _projectService = projectService;
             _projectCategoryService = projectCategoryService;
+            _categoryProjectService = categoryProjectService;
         }
         [HttpGet]
         [Route("/Admin/Projects/{search?}")]
@@ -57,6 +60,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         {
             var model = _projectService.GetProjectById(id).Result;
             GetCategories();
+            GetSelectedCategoryIds(id);
             return View(model);
         }
 
@@ -84,7 +88,12 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         public void GetCategories()
         {
             var categories = _projectCategoryService.GetProjectCategoryList().Result;
-            ViewData["Categories"] = new SelectList(categories, "CategoryId", "CategoryTitle");
+            ViewData["Categories"] = categories;
+        }
+        public void GetSelectedCategoryIds(int projectId)
+        {
+            var selected = _categoryProjectService.GetSelectedCategoryIds(projectId).Result;
+            ViewBag.Selected = selected;
         }
     }
 }

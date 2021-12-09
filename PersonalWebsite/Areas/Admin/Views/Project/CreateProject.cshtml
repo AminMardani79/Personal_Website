@@ -1,6 +1,7 @@
 ﻿@model CreateProjectViewModel
 @{
     ViewData["Title"] = "افزودن پروژه";
+    IEnumerable<ProjectCategoryViewModel> models = ViewBag.Categories as List<ProjectCategoryViewModel>;
 }
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
@@ -29,7 +30,11 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputText1">دسته بندی</label>
-                        <select asp-for="CategoryId" asp-items="@ViewBag.Categories"></select>
+                        <select asp-for="CategoryItems" multiple>
+                            @foreach(var item in models){
+                                <option value="@item.CategoryId">@item.CategoryTitle</option>
+                            }
+                        </select>
                         <span asp-validation-for="ProjectSubTitle" class="text-danger"></span>
                     </div>
                     <div class="form-group">

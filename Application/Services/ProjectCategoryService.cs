@@ -23,12 +23,13 @@ namespace Application.Services
         {
             ProjectCategory model = new ProjectCategory();
             model.CategoryTitle = projectCategory.CategoryTitle;
+            model.CategoryFilter = projectCategory.CategoryFilter;
             _projectCategoryRepository.CreateProjectCategory(model);
         }
 
         public void DeleteProjectCategory(int projectCategoryId)
         {
-            var model = _projectCategoryRepository.GetProjectCategoryById(projectCategoryId).Result;
+            var model = _projectCategoryRepository.GetDeletedProjectCategoryById(projectCategoryId).Result;
             _projectCategoryRepository.DeleteProjectCategory(model);
         }
         public void AddCategoryToTrashList(int projectCategoryId)
@@ -49,6 +50,7 @@ namespace Application.Services
         {
             var model = _projectCategoryRepository.GetProjectCategoryById(projectCategory.CategoryId).Result;
             model.CategoryTitle = projectCategory.CategoryTitle;
+            model.CategoryFilter = projectCategory.CategoryFilter;
             _projectCategoryRepository.UpdateProjectCategory(model);
         }
 
@@ -58,6 +60,7 @@ namespace Application.Services
             EditProjectCategoryViewModel model = new EditProjectCategoryViewModel();
             model.CategoryId = category.CategoryId;
             model.CategoryTitle = category.CategoryTitle;
+            model.CategoryFilter = category.CategoryFilter;
             return model;
         }
 
@@ -70,7 +73,8 @@ namespace Application.Services
                 models.Add(new ProjectCategoryViewModel()
                 {
                     CategoryId = category.CategoryId,
-                    CategoryTitle = category.CategoryTitle
+                    CategoryTitle = category.CategoryTitle,
+                    CategoryFilter = category.CategoryFilter,
                 });
             }
             return models;
@@ -82,6 +86,7 @@ namespace Application.Services
             EditProjectCategoryViewModel model = new EditProjectCategoryViewModel();
             model.CategoryId = category.CategoryId;
             model.CategoryTitle = category.CategoryTitle;
+            model.CategoryFilter = category.CategoryFilter;
             return model;
         }
 
@@ -94,7 +99,8 @@ namespace Application.Services
                 models.Add(new ProjectCategoryViewModel()
                 {
                     CategoryId = category.CategoryId,
-                    CategoryTitle = category.CategoryTitle
+                    CategoryTitle = category.CategoryTitle,
+                    CategoryFilter= category.CategoryFilter,
                 });
             }
             return models;
@@ -108,7 +114,8 @@ namespace Application.Services
                 models.Add(new ProjectCategoryViewModel()
                 {
                     CategoryId = category.CategoryId,
-                    CategoryTitle = category.CategoryTitle
+                    CategoryTitle = category.CategoryTitle,
+                    CategoryFilter = category.CategoryFilter,
                 });
             }
             return models;

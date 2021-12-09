@@ -27,7 +27,7 @@ namespace Application.ViewModel.ProjectViewModel
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string DownloadLink { get; set; }
+        public List<int> CategoryItems { get; set; }
 
-        public int CategoryId { get; set; }
     }
 }

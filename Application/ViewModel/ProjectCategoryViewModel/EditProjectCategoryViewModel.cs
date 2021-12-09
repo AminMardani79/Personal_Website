@@ -13,6 +13,9 @@ namespace Application.ViewModel.ProjectCategoryViewModel
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(50, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string CategoryTitle { get; set; }
+        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
+        [MaxLength(50, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        public string CategoryFilter { get; set; }
         public bool IsCategoryDelete { get; set; }
     }
 }

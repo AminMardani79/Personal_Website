@@ -18,6 +18,11 @@
                         <input type="text" class="form-control" asp-for="CategoryTitle" placeholder="عنوان" />
                         <span asp-validation-for="CategoryTitle" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">فیلتر</label>
+                        <input type="text" class="form-control" asp-for="CategoryFilter" placeholder="فیلتر" />
+                        <span asp-validation-for="CategoryFilter" class="text-danger"></span>
+                    </div>
                     <button class="btn btn-primary" type="submit">افزودن</button>
                 </form>
             </div>
