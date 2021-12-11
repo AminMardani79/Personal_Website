@@ -18,6 +18,7 @@ namespace Domain.Interface
         void UpdateProjectCategory(ProjectCategory category);
         void DeleteProjectCategory(ProjectCategory category);
         void AttachProjectCategory(ProjectCategory category);
+        Task<List<ProjectCategory>> ShowCategories();
         void Save();
     }
 }

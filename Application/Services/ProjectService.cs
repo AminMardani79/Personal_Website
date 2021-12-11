@@ -111,7 +111,32 @@ namespace Application.Services
             }
             return Tuple.Create(models, pagesCount, pageNumber);
         }
-
+        public async Task<IEnumerable<ProjectViewModel>> ShowProjects()
+        {
+            var projectList = await _projectRepository.ShowProjects();
+            var models = new List<ProjectViewModel>();
+            foreach (var project in projectList)
+            {
+                var categoryModels = new List<ProjectCategoryViewModel>();
+                var categories = await _categoryProjectRepository.GetCategoryProjectsById(project.ProjectId);
+                foreach (var category in categories)
+                {
+                    categoryModels.Add(new ProjectCategoryViewModel
+                    {
+                        CategoryFilter = category.ProjectCategory.CategoryFilter
+                    });
+                }
+                models.Add(new ProjectViewModel()
+                {
+                    ProjectId = project.ProjectId,
+                    ProjectSubTitle = project.ProjectSubTitle,
+                    ProjectTitle = project.ProjectTitle,
+                    ProjectImage = project.ProjectImage,
+                    Categories = categoryModels
+                });
+            }
+            return models;
+        }
 
         #region Private Methods
 

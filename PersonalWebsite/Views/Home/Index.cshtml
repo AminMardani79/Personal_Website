@@ -105,65 +105,11 @@
         <div class="portfolio-filter-01">
             <ul class="filter nav">
                 <li class="active" data-filter="*">همه</li>
-                <li data-filter=".branding">برندسازی</li>
-                <li data-filter=".photoshop">فتوشاپ</li>
-                <li data-filter=".fashion">مد و زیبایی</li>
-                <li data-filter=".product">محصول</li>
+                @await Component.InvokeAsync("Category")
             </ul>
         </div> <!-- Portfolio Filter -->
         <div class="portfolio-content grid-gutter-lg grid-col-3 lightbox-gallery">
-            <div class="grid-item product branding fashion">
-                <div class="portfolio-box-01">
-                    <div class="portfolio-info">
-                        <h5 class="white-color primary-font">عنوان نمونه کار</h5>
-                        <span>برندسازی ، مد و زیبایی</span>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem
-                            eligendi distinctio deleniti repellat labore iusto perferendis voluptatem incidunt
-                            illum!
-                        </p>
-                        <div class="flex justify-content-center py-2">
-                            <a href="">
-                                <i class="fas fa-cloud-download-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="portfolio-img">
-                        <img src="/static/img/m-portfolio-1.jpg" title="" alt="">
-                        <div class="portfolio-icon">
-                            <a href="/static/img/m-portfolio-1.jpg" class="gallery-link">
-                                <span class="ti-plus"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- grid item -->
-            <div class="grid-item product branding fashion">
-                <div class="portfolio-box-01">
-                    <div class="portfolio-info">
-                        <h5 class="white-color primary-font">عنوان نمونه کار</h5>
-                        <span>برندسازی ، مد و زیبایی</span>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem
-                            eligendi distinctio deleniti repellat labore iusto perferendis voluptatem incidunt
-                            illum!
-                        </p>
-                        <div class="flex justify-content-center py-2">
-                            <a href="">
-                                <i class="fas fa-cloud-download-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="portfolio-img">
-                        <img src="/static/img/m-portfolio-1.jpg" title="" alt="">
-                        <div class="portfolio-icon">
-                            <a href="/static/img/m-portfolio-1.jpg" class="gallery-link">
-                                <span class="ti-plus"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div> 
+            @await Component.InvokeAsync("Project")
         </div>
     </div>
 </section>

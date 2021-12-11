@@ -19,5 +19,6 @@ namespace Application.Interface
         void DeleteProjectCategory(int projectCategoryId);
         void AddCategoryToTrashList(int projectCategoryId);
         void BackToList(int projectCategoryId);
+        Task<List<ProjectCategoryViewModel>> ShowCategories();
     }
 }

@@ -14,5 +14,6 @@ namespace Application.Interface
         void CreateProject(CreateProjectViewModel project);
         void EditProject(EditProjectViewModel project);
         void DeleteProject(int projectId);
+        Task<IEnumerable<ProjectViewModel>> ShowProjects();
     }
 }

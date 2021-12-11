@@ -66,5 +66,9 @@ namespace Data.Repository
             _context.Update(category);
             Save();
         }
+        public async Task<List<ProjectCategory>> ShowCategories()
+        {
+            return await _context.ProjectCategorys.ToListAsync();
+        }
     }
 }

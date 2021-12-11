@@ -49,5 +49,9 @@ namespace Data.Repository
             _context.Update(project);
             Save();
         }
+        public async Task<IEnumerable<Project>> ShowProjects()
+        {
+            return await _context.Projects.ToListAsync();
+        }
     }
 }

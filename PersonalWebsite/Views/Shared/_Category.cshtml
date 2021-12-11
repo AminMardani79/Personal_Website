@@ -1,0 +1,6 @@
+﻿@model List<ProjectCategoryViewModel>
+@foreach (var item in Model)
+{
+    <li data-filter=".@item.CategoryFilter">@item.CategoryTitle</li>
+
+}

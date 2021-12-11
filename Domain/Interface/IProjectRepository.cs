@@ -15,5 +15,6 @@ namespace Domain.Interface
         void DeleteProject(Project project);
         void UpdateProject(Project project);
         void Save();
+        Task<IEnumerable<Project>> ShowProjects();
     }
 }
