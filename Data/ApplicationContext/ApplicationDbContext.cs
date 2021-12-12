@@ -26,6 +26,7 @@ namespace Data.ApplicationContext
         public DbSet<CategoryProject> CategoryProjects { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<SkillDetail> SkillDetails { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

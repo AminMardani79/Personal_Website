@@ -1,4 +1,9 @@
-﻿@model CreateContactMessageViewModel
+﻿@using Application.Interface
+@model CreateContactMessageViewModel
+@inject IContactDetailService contactDetailService; 
+@{
+    var contactDetail = contactDetailService.GetContactDetail().Result;
+}
 <div class="container">
     <div class="title">
         <h3>ارتباط با من.</h3>
@@ -13,19 +18,12 @@
                 </p>
                 <ul>
                     <li class="media">
-                        <i class="ti-map"></i>
-                        <span class="media-body">
-                            تبریز، چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه
-                            567
-                        </span>
-                    </li>
-                    <li class="media">
                         <i class="ti-email"></i>
-                        <span class="media-body">support@domain.com</span>
+                        <span class="media-body">@contactDetail.ContactEmail</span>
                     </li>
                     <li class="media">
                         <i class="ti-mobile"></i>
-                        <span class="media-body ltr-text">+98 9696 3636</span>
+                        <span class="media-body ltr-text">@contactDetail.ContactNumber</span>
                     </li>
                 </ul>
             </div>
