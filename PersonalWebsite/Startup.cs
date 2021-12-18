@@ -46,8 +46,22 @@ namespace PersonalWebsite
 
             #endregion
 
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("Authorize", policybuilder =>
+                {
+                    policybuilder.RequireClaim("AuthorizeValue");
+                });
+            });
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>()
+            services.AddIdentity<IdentityUser, IdentityRole>(config =>
+            {
+                config.Password.RequireDigit = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = false;
+                config.SignIn.RequireConfirmedEmail = true;
+                config.SignIn.RequireConfirmedPhoneNumber = true;
+            }).AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();

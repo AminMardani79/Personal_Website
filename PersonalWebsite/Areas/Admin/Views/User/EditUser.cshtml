@@ -1,0 +1,57 @@
+﻿@using Application.ViewModel.UserViewModel
+@model EditUserViewModel
+@{
+    ViewData["Title"] = "ویرایش کاربر";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">ویرایش کاربر</h6>
+                    <a href="/Admin/Users">
+                        بازگشت <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                    </a>
+                </div>
+                <form href="/Admin/Users/Edit/@Model.Id" method="post">
+                    <input type="hidden" asp-for="Id"/>
+                    <input type="hidden" asp-for="LastPassword"/>
+                    <div class="form-group">
+                        <label for="exampleInputText1">نام کاربری</label>
+                        <input type="text" class="form-control" asp-for="UserName" placeholder="نام کاربری" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">ایمیل</label>
+                        <input type="email" class="form-control" asp-for="UserEmail" placeholder="ایمیل" />
+                        <span asp-validation-for="UserEmail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">"شماره موبایل</label>
+                        <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="شماره موبایل" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">کلمه عبور</label>
+                        <input type="password" class="form-control" asp-for="NewPassword" placeholder="کلمه عبور" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تایید کلمه عبور</label>
+                        <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="تایید کلمه عبور" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">دسترسی به پنل</label>
+                        <input type="checkbox" asp-for="HasAccess" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
