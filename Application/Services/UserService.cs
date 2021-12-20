@@ -45,10 +45,17 @@ namespace Application.Services
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
-            var result = await _userRepository.AddUserAsync(user,model.Password);
-            if(result.Succeeded && model.HasAccess)
+            var result = await _userRepository.AddUserAsync(user, model.Password);
+            if (result.Succeeded && model.HasAccess)
             {
-                await _userRepository.AddClaimAsync(user, new Claim("AuthorizeValue", "Admin"));
+                IEnumerable<Claim> claims = new List<Claim>()
+                {
+                    new Claim("AuthorizeValue", "Admin"),
+                    new Claim("UserName",user.UserName),
+                    new Claim("Email",user.Email)
+                };
+
+                await _userRepository.AddClaimsAsync(user, claims);
             }
         }
         public async Task<bool> EditUserAsync(EditUserViewModel model)
@@ -70,7 +77,7 @@ namespace Application.Services
             {
                 EditResult = true ? result.Succeeded : false;
             }
-            if(model.HasAccess != authorizeClaim)
+            if (model.HasAccess != authorizeClaim)
             {
                 if (model.HasAccess)
                 {
@@ -103,7 +110,7 @@ namespace Application.Services
         {
             bool finalResult = false;
             var user = await _userRepository.GetUserById(id);
-            if(user is not null)
+            if (user is not null)
             {
                 var claims = await _userRepository.GetClaimsAsync(user);
                 var claimRes = await _userRepository.RemoveClaimsAsync(user, claims);

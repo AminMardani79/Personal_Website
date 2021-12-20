@@ -22,6 +22,7 @@ namespace Domain.Interface
 
         #region Claim
 
+        Task AddClaimsAsync(IdentityUser user, IEnumerable<Claim> claims);
         Task AddClaimAsync(IdentityUser user, Claim claim);
         Task<IdentityResult> RemoveClaimsAsync(IdentityUser user, IEnumerable<Claim> claims);
         Task RemoveClaimAsync(IdentityUser user, Claim claim);

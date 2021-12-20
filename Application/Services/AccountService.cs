@@ -31,5 +31,9 @@ namespace Application.Services
             }
             return finalResult;
         }
+        public async Task SignOutAsync()
+        {
+            await _accountRepository.SignOutAsync();
+        }
     }
 }

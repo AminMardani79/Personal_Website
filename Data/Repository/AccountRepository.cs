@@ -19,5 +19,9 @@ namespace Data.Repository
         {
             return await _signInManager.PasswordSignInAsync(user, password, isPersistent, lockOutOnFailure);
         }
+        public async Task SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace Domain.Interface
     public interface IAccountRepository
     {
         Task<SignInResult> SignInAsync(IdentityUser user, string password, bool isPersistent, bool lockOutOnFailure);
+        Task SignOutAsync();
     }
 }

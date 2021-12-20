@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PersonalWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Policy = "Authorize")]
+    [Authorize(Policy = "Authorize")]
     public class UserController : Controller
     {
         private readonly IUserService _userService;

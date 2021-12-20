@@ -60,6 +60,10 @@ namespace Data.Repository
         #region Claims
 
 
+        public async Task AddClaimsAsync(IdentityUser user, IEnumerable<Claim> claims)
+        {
+            await _userManager.AddClaimsAsync(user,claims);
+        }
         public async Task AddClaimAsync(IdentityUser user, Claim claim)
         {
             await _userManager.AddClaimAsync(user, claim);

@@ -10,5 +10,6 @@ namespace Application.Interface
     public interface IAccountService
     {
         Task<bool> SignInUser(LoginViewModel model);
+        Task SignOutAsync();
     }
 }
