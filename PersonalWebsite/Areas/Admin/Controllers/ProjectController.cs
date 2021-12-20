@@ -1,5 +1,6 @@
 ﻿using Application.Interface;
 using Application.ViewModel.ProjectViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace PersonalWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "Authorize")]
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;

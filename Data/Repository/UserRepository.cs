@@ -13,13 +13,11 @@ namespace Data.Repository
     public class UserRepository:IUserRepository
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        
         public UserRepository(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
         }
 
 
@@ -50,8 +48,14 @@ namespace Data.Repository
         {
             return await _userManager.FindByIdAsync(id);
         }
-
-
+        public async Task<IdentityUser> GetUserByEmail(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+        public async Task<bool> CheckPasswordAsync(IdentityUser user,string password)
+        {
+            return await _userManager.CheckPasswordAsync(user, password);
+        }
 
         #region Claims
 

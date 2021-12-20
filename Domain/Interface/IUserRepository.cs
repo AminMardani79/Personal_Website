@@ -13,10 +13,12 @@ namespace Domain.Interface
     {
         Task<IEnumerable<IdentityUser>> GetAllUsers();
         Task<IdentityUser> GetUserById(string id);
+        Task<IdentityUser> GetUserByEmail(string email);
         Task<IdentityResult> AddUserAsync(IdentityUser user,string password);
         Task<IdentityResult> EditUserAsync(IdentityUser user);
         Task<IdentityResult> RemoveUserAsync(IdentityUser user);
         Task<IdentityResult> ResetPasswordAsync(IdentityUser user,string newPassword);
+        Task<bool> CheckPasswordAsync(IdentityUser user, string password);
 
         #region Claim
 

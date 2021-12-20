@@ -1,5 +1,6 @@
 ﻿using Application.Interface;
 using Application.ViewModel.ContactViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace PersonalWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "Authorize")]
     public class MessageController : Controller
     {
         private readonly IContactMessageService _contactMessageService;

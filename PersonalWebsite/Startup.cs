@@ -64,6 +64,15 @@ namespace PersonalWebsite
             }).AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.Cookie.Name = "Identity.Cookie";
+                config.LoginPath = "/Admin/Account/Login";
+                config.LogoutPath = "/";
+                config.AccessDeniedPath = "/Admin/Account/AccessDenied";
+                config.ExpireTimeSpan = TimeSpan.FromDays(30);
+            });
+
             services.AddControllersWithViews();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Application.Interface;
 using Application.ViewModel.ProjectCategoryViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace PersonalWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "Authorize")]
     public class ProjectCategoryController : Controller
     {
         private readonly IProjectCategoryService _projectCategoryService;
