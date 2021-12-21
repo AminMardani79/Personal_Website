@@ -58,7 +58,8 @@ namespace Application.Services
         {
             int skip = (pageNumber - 1) * take;
             var messagesList = _contactMessageRepository.GetMessagesList(search,skip,take).Result;
-            int pagesCount = PagesCount.PageCount(messagesList.Count(), take);
+            var messagesCount = _contactMessageRepository.GetMessagesCount().Result;
+            int pagesCount = PagesCount.PageCount(messagesCount, take);
             List<ContactMessageViewModel> models = new List<ContactMessageViewModel>();
             foreach (var message in messagesList)
             {

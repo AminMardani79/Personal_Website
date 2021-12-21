@@ -54,5 +54,9 @@ namespace Data.Repository
         {
             return await _context.DoWorks.OrderByDescending(o => o.DoWorkId).ToListAsync();
         }
+        public async Task<int> GetDoWorksCount()
+        {
+            return await _context.DoWorks.CountAsync();
+        }
     }
 }

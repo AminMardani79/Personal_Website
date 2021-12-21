@@ -87,7 +87,8 @@ namespace Application.Services
         {
             int skip = (pageNumber - 1) * take;
             var projectList = _projectRepository.GetProjectsList(search, skip, take).Result;
-            int pagesCount = PagesCount.PageCount(projectList.Count(), take);
+            var projectsCount = _projectRepository.GetProjectsCount().Result;
+            int pagesCount = PagesCount.PageCount(projectsCount, take);
             var models = new List<ProjectViewModel>();
             foreach (var project in projectList)
             {

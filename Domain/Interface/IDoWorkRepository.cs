@@ -17,5 +17,6 @@ namespace Domain.Interface
         void Save();
 
         Task<IEnumerable<DoWork>> ShowDoWorks();
+        Task<int> GetDoWorksCount();
     }
 }

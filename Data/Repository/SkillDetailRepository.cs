@@ -53,5 +53,9 @@ namespace Data.Repository
         {
             return await _context.SkillDetails.OrderBy(s => s.SkillDetailId).ToListAsync();
         }
+        public async Task<int> GetSkillsCount()
+        {
+            return await _context.SkillDetails.CountAsync();
+        }
     }
 }

@@ -51,5 +51,9 @@ namespace Data.Repository
         {
             return await _context.ContactMessages.Where(m => m.IsShowing).OrderByDescending(m => m.MessageId).ToListAsync();
         }
+        public async Task<int> GetMessagesCount()
+        {
+            return await _context.ContactMessages.CountAsync();
+        }
     }
 }

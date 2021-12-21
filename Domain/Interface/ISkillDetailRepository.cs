@@ -17,5 +17,6 @@ namespace Domain.Interface
         void Save();
 
         Task<IEnumerable<SkillDetail>> ShowSkillDetails();
+        Task<int> GetSkillsCount();
     }
 }

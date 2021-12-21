@@ -16,5 +16,6 @@ namespace Domain.Interface
         void UpdateProject(Project project);
         void Save();
         Task<IEnumerable<Project>> ShowProjects();
+        Task<int> GetProjectsCount();
     }
 }

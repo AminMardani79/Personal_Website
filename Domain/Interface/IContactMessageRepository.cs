@@ -15,6 +15,7 @@ namespace Domain.Interface
         void DeleteMessage(ContactMessage message);
         void AttachMessage(ContactMessage message);
         void Save();
-        Task<IEnumerable<ContactMessage>> ShowActiveMessages(); 
+        Task<IEnumerable<ContactMessage>> ShowActiveMessages();
+        Task<int> GetMessagesCount();
     }
 }

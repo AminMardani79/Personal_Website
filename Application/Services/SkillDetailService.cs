@@ -58,7 +58,8 @@ namespace Application.Services
         {
             int skip = (pageNumber - 1) * take;
             var detailList = _skillDetailRepository.GetSkillDetailsList(search, skip, take).Result;
-            int pagesCount = PagesCount.PageCount(detailList.Count(), take);
+            var skillCounts = _skillDetailRepository.GetSkillsCount().Result;
+            int pagesCount = PagesCount.PageCount(skillCounts, take);
             List<SkillDetailViewModel> models = new List<SkillDetailViewModel>();
             foreach (var detail in detailList)
             {

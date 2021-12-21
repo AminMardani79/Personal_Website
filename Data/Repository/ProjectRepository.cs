@@ -53,5 +53,9 @@ namespace Data.Repository
         {
             return await _context.Projects.ToListAsync();
         }
+        public async Task<int> GetProjectsCount()
+        {
+            return await _context.Projects.CountAsync();
+        }
     }
 }

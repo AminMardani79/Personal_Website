@@ -79,7 +79,8 @@ namespace Application.Services
         {
             int skip = (pageNumber - 1) * take;
             var experienceList = _experienceRepository.GetExperiencesList(search, skip, take).Result;
-            int pagesCount = PagesCount.PageCount(experienceList.Count(), take);
+            var experiencesCount = _experienceRepository.GetExperiencesCount().Result;
+            int pagesCount = PagesCount.PageCount(experiencesCount, take);
             List<ExperienceViewModel> models = new List<ExperienceViewModel>();
             foreach (var experience in experienceList)
             {

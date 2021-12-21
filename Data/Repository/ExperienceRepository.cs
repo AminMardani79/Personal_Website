@@ -36,7 +36,7 @@ namespace Data.Repository
 
         public async Task<IEnumerable<Experience>> GetExperiencesList(string search, int skip, int take)
         {
-            return await _context.Experiences.Where(e=> EF.Functions.Like(e.ExperienceTitle,$"%{search}%")).Skip(skip).Take(take).ToListAsync();
+            return await _context.Experiences.Where(e=> EF.Functions.Like(e.ExperienceTitle,$"%{search}%")).OrderByDescending(e=> e.ExperienceId).Skip(skip).Take(take).ToListAsync();
         }
 
         public void Save()
@@ -52,6 +52,10 @@ namespace Data.Repository
         public async Task<IEnumerable<Experience>> ShowExperiences()
         {
             return await _context.Experiences.OrderByDescending(e => e.ExperienceId).ToListAsync();
+        }
+        public async Task<int> GetExperiencesCount()
+        {
+            return await _context.Experiences.CountAsync();
         }
     }
 }

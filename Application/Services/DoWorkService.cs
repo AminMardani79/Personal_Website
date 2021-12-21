@@ -77,7 +77,8 @@ namespace Application.Services
         {
             int skip = (pageNumber - 1) * take;
             var doWorkList = _doWorkRepository.GetDoWorksList(search, skip, take).Result;
-            int pagesCount = PagesCount.PageCount(doWorkList.Count(), take);
+            var doWorksCount = _doWorkRepository.GetDoWorksCount().Result;
+            int pagesCount = PagesCount.PageCount(doWorksCount, take);
             List<DoWorkViewModel> models = new List<DoWorkViewModel>();
             foreach (var doWork in doWorkList)
             {

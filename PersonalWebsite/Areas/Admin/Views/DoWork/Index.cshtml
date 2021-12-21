@@ -47,6 +47,25 @@
                             }
                         </tbody>
                     </table>
+                    @if (Model.Item2 > 1)
+                    {
+                        <div class="dataTables_paginate paging_simple_numbers py-3 d-flex justify-content-center" id="dataTableExample_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous @((Model.Item3 - 1 == 0) ? "disabled" : "")" id="dataTableExample_previous">
+                                    <a href="/Admin/DoWorks?pageNumber=@(Model.Item3 - 1)" aria-controls="dataTableExample" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a>
+                                </li>
+                                @for (int i = 1; i <= (Model.Item2); i++)
+                                {
+                                    <li class="paginate_button page-item @(Model.Item3 == i ? "active" : "")">
+                                        <a href="/Admin/DoWorks?pageNumber=@i" aria-controls="dataTableExample" data-dt-idx="1" tabindex="0" class="page-link">@i</a>
+                                    </li>
+                                }
+                                <li class="paginate_button page-item @((Model.Item3 + 1 > Model.Item2) ? "disabled" : "")" id="dataTableExample_next">
+                                    <a href="/Admin/DoWorks?pageNumber=@(Model.Item3 + 1)" aria-controls="dataTableExample" data-dt-idx="4" tabindex="0" class="page-link">بعدی</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

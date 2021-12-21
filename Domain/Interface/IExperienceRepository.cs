@@ -16,5 +16,6 @@ namespace Domain.Interface
         void UpdateExperience(Experience experience);
         void Save();
         Task<IEnumerable<Experience>> ShowExperiences();
+        Task<int> GetExperiencesCount();
     }
 }
