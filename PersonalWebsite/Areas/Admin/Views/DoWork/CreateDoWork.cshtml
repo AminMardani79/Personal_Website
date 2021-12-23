@@ -14,13 +14,14 @@
                 </div>
                 <form asp-controller="DoWork" asp-action="CreateDoWork" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="exampleInputText1">تصویر کار</label>
-                        <input type="file" asp-for="DoWorkImage"/>
-                    </div>
-                    <div class="form-group">
                         <label for="exampleInputText1">عنوان کار</label>
                         <input type="text" class="form-control" asp-for="DoWorkTitle" placeholder="عنوان کار" />
                         <span asp-validation-for="DoWorkTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputText1">تصویر کار</label>
+                        <input type="text" class="form-control" asp-for="DoWorkIcon" placeholder="آیکون" />
+                        <span asp-validation-for="DoWorkIcon" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputText1">توضیحات کار</label>

@@ -19,7 +19,7 @@ namespace Domain.Models
         public string DoWorkDesc { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
-        public string DoWorkImage { get; set; }
+        public string DoWorkIcon { get; set; }
 
     }
 }

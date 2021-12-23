@@ -23,19 +23,7 @@ namespace Application.Services
             DoWork model = new DoWork();
             model.DoWorkDesc = doWork.DoWorkDesc;
             model.DoWorkTitle = doWork.DoWorkTitle;
-            if(doWork.DoWorkImage != null)
-            {
-                bool check = doWork.DoWorkImage.IsImage();
-                model.DoWorkImage = check switch
-                {
-                    true => ImageConvertor.SaveImage(doWork.DoWorkImage),
-                    false => "default.png"
-                };
-            }
-            else
-            {
-                model.DoWorkImage = "default.png";
-            }
+            model.DoWorkIcon = doWork.DoWorkIcon;
             _doWorkRepository.CreateDoWork(model);
         }
 
@@ -50,15 +38,7 @@ namespace Application.Services
             var model = _doWorkRepository.GetDoWorkById(doWork.DoWorkId).Result;
             model.DoWorkDesc = doWork.DoWorkDesc;
             model.DoWorkTitle = doWork.DoWorkTitle;
-            if(doWork.ImageFile != null)
-            {
-                bool checkImage = doWork.ImageFile.IsImage();
-                if (checkImage)
-                {
-                    ImageConvertor.RemoveImage(doWork.DoWorkImage);
-                    model.DoWorkImage = ImageConvertor.SaveImage(doWork.ImageFile);
-                }
-            }
+            model.DoWorkIcon = doWork.DoWorkIcon;
             _doWorkRepository.UpdateDoWork(model);
         }
 
@@ -68,7 +48,7 @@ namespace Application.Services
             EditDoWorkViewModel model = new EditDoWorkViewModel();
             model.DoWorkTitle = doWork.DoWorkTitle;
             model.DoWorkDesc = doWork.DoWorkDesc;
-            model.DoWorkImage = doWork.DoWorkImage;
+            model.DoWorkIcon = doWork.DoWorkIcon;
             model.DoWorkId = doWorkId;
             return model;
         }
@@ -86,7 +66,7 @@ namespace Application.Services
                 {
                     DoWorkId = doWork.DoWorkId,
                     DoWorkTitle = doWork.DoWorkTitle,
-                    DoWorkImage = doWork.DoWorkImage
+                    DoWorkIcon = doWork.DoWorkIcon
                 });
             }
             return Tuple.Create(models, pagesCount, pageNumber);
@@ -101,7 +81,7 @@ namespace Application.Services
                 list.Add(new()
                 {
                     DoWorkId = item.DoWorkId,
-                    DoWorkImage = item.DoWorkImage,
+                    DoWorkIcon = item.DoWorkIcon,
                     DoWorkTitle = item.DoWorkTitle,
                     DoWorkDesc = item.DoWorkDesc
                 });
