@@ -2,6 +2,8 @@
 using Application.ViewModel.ContactViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using PersonalWebsite.Hubs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,13 @@ namespace PersonalWebsite.Areas.Admin.Controllers
     public class MessageController : Controller
     {
         private readonly IContactMessageService _contactMessageService;
+        private readonly IMessagesCountService _messagesCountService;
 
-        public MessageController(IContactMessageService contactMessageService)
+        public MessageController(IContactMessageService contactMessageService,
+            IMessagesCountService messagesCountService)
         {
             _contactMessageService = contactMessageService;
+            _messagesCountService = messagesCountService;
         }
         [HttpGet]
         [Route("/Admin/Messages/{search?}")]
@@ -25,6 +30,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         {
             int take = 6;
             var messages = _contactMessageService.GetMessagesList(search ?? "", take, pageNumber);
+            _messagesCountService.ReadMessages();
             return View(messages);
         }
 

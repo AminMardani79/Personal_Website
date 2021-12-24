@@ -29,6 +29,7 @@ namespace IOC
             service.AddScoped<ICategoryProjectRepository,CategoryProjectRepository>();
             service.AddScoped<IUserRepository,UserRepository>();
             service.AddScoped<IAccountRepository,AccountRepository>();
+            service.AddScoped<IMessagesCountRepository,MessagesCountRepository>();
 
             // Services
             service.AddScoped<IAboutService, AboutService>();
@@ -44,6 +45,7 @@ namespace IOC
             service.AddScoped<ICategoryProjectService, CategoryProjectService>();
             service.AddScoped<IUserService, UserService>();
             service.AddScoped<IAccountService, AccountService>();
+            service.AddScoped<IMessagesCountService, MessagesCountService>();
         }
     }
 }
