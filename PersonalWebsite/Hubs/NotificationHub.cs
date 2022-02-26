@@ -28,7 +28,6 @@ namespace PersonalWebsite.Hubs
         }
         public async Task AddNewMessage()
         {
-            await _messagesCountService.AttachMessagesCount();
             var model = await _messagesCountService.GetMessagesCount();
             await Clients.All.SendAsync("ShowNewNumber",new MessagesCount(model));
         }

@@ -15,14 +15,17 @@ namespace PersonalWebsite.Controllers
     {
         private readonly IContactMessageService _contactMessageService;
         private readonly IHubContext<NotificationHub> _notifHub;
-        public ContactController(IContactMessageService contactMessageService, IHubContext<NotificationHub> notifHub)
+        private readonly IMessagesCountService _messagesCountService;
+        public ContactController(IContactMessageService contactMessageService, IHubContext<NotificationHub> notifHub
+            , IMessagesCountService messagesCountService)
         {
             _contactMessageService = contactMessageService;
             _notifHub = notifHub;
+            _messagesCountService = messagesCountService;
         }
         [HttpGet]
         [Route("/SendMessage")]
-        public async void SendMessage(string name,string subject,string message,string email,string number)
+        public async Task SendMessage(string name,string subject,string message,string email,string number)
         {
             if(name == null || subject ==null || message == null)
             {
@@ -39,6 +42,7 @@ namespace PersonalWebsite.Controllers
                     UserEmail = email
                 };
                 _contactMessageService.CreateMessage(model);
+                await _messagesCountService.AttachMessagesCount();
                 await _notifHub.Clients.All.SendAsync("CountNewMessage");
             }
         }

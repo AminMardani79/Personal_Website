@@ -28,11 +28,17 @@
             let connection = new signalR.HubConnectionBuilder()
             .withUrl("/NotifHub")
             .build();
+            StartConnection();
+        function StartConnection(){
             connection.start().then(() => {
-            console.log("connected")
-        });
+                console.log("connected");
+            });
+        }
         connection.on("CountNewMessage",CountNewMessage);
         connection.on("ShowNewNumber",ShowNewNumber);
+        connection.onclose(function() {
+            setTimeout(StartConnection,5000);
+        });
         function CountNewMessage(){
             connection.invoke("AddNewMessage");
         }
