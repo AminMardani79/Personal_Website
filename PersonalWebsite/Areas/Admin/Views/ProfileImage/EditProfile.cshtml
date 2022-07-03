@@ -1,0 +1,29 @@
+﻿@model EditProfileViewModel
+@{
+    ViewData["Title"] = "ویرایش پروفایل";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h6 class="card-title">ویرایش پروفایل</h6>
+                </div>
+                <form asp-controller="ProfileImage" asp-action="EditProfile" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="ProfileId" />
+                    <input type="hidden" asp-for="ProfileImage" />
+                    <div class="form-group">
+                        <label for="exampleInputText1">تصویر</label>
+                        <input type="file" asp-for="File" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">ویرایش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

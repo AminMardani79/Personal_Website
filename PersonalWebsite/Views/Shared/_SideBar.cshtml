@@ -1,14 +1,16 @@
 ﻿@using Application.Interface
 @inject IContactDetailService contactDetailService;
+@inject IProfileService profileService;
 @{
     var contactDetail = contactDetailService.GetContactDetail().Result;
+    var profileName = profileService.GetProfile().Result.ProfileImage;
 }
 <header class="header-left">
     <div class="scroll-bar">
         <div class="hl-top">
             <div class="hl-logo">
-                <div class="img">
-                    <img src="/static/img/about-me.jpg" title="" alt="">
+                <div class="img" style="width:120px;height:120px">
+                    <img src="/image/@profileName" title="" alt="" style="width:120px;height:120px">
                 </div>
                 <h5 class="primary-font">امین مردانی</h5>
             </div>
