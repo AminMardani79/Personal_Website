@@ -2,6 +2,7 @@
 using Application.ViewModel.ProfileViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace PersonalWebsite.Areas.Admin.Controllers
 {
@@ -23,13 +24,13 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         }
         [HttpPost]
         [Route("/Admin/EditProfile")]
-        public IActionResult EditProfile(EditProfileViewModel model)
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            _profileService.UpdateProfile(model);
+            await _profileService.UpdateProfile(model);
             return RedirectToAction("EditProfile","ProfileImage");
         }
     }

@@ -9,7 +9,7 @@ namespace Application.Interface
 {
     public interface IProfileService
     {
-        void UpdateProfile(EditProfileViewModel model);
+        Task UpdateProfile(EditProfileViewModel model);
         Task<EditProfileViewModel> GetProfile();
     }
 }

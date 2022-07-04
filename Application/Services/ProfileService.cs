@@ -29,20 +29,14 @@ namespace Application.Services
             return model;
         }
 
-        public async void UpdateProfile(EditProfileViewModel model)
+        public async Task UpdateProfile(EditProfileViewModel model)
         {
             var profile = await _profileRepositoy.GetProfileImageAsync();
-            if (profile != null)
+            bool checkImage = model.File.IsImage();
+            if (profile != null && model.File != null && checkImage)
             {
-                if (model.File != null)
-                {
-                    bool checkImage = model.File.IsImage();
-                    if (checkImage)
-                    {
-                        ImageConvertor.RemoveImage(model.ProfileImage);
-                        profile.Image = ImageConvertor.SaveImage(model.File);
-                    }
-                }
+                ImageConvertor.RemoveImage(model.ProfileImage);
+                profile.Image = ImageConvertor.SaveImage(model.File);
                 _profileRepositoy.UpdateProfile(profile);
             }
         }

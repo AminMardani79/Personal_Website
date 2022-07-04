@@ -12,9 +12,11 @@
                 <form asp-controller="ProfileImage" asp-action="EditProfile" method="post" enctype="multipart/form-data">
                     <input type="hidden" asp-for="ProfileId" />
                     <input type="hidden" asp-for="ProfileImage" />
-                    <div class="form-group">
-                        <label for="exampleInputText1">تصویر</label>
-                        <input type="file" asp-for="File" />
+                    <div class="form-group ">
+                        <label for="profileInput">
+                            <img src="/image/@Model.ProfileImage" style="width:120px;height:120px;border-radius:50%;cursor:pointer" id="image" />
+                        </label>
+                        <input type="file" asp-for="File" id="profileInput" style="display:none" />
                     </div>
                     <button class="btn btn-primary" type="submit">ویرایش</button>
                 </form>
@@ -26,4 +28,14 @@
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
+<script>
+    const image = document.getElementById('image');
+    const profileInput = document.getElementById('profileInput');
+    profileInput.addEventListener('change',(e)=>{
+        const file = e.target.files[0];
+        image.src = URL.createObjectURL(file);
+    })
+</script>
 }
+
+

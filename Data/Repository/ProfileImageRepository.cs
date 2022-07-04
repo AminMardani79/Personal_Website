@@ -29,7 +29,7 @@ namespace Data.Repository
 
         public void UpdateProfile(ProfileImage image)
         {
-            _context.SaveChanges();
+            _context.Update(image);
             Save();
         }
     }
