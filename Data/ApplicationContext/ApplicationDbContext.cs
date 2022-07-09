@@ -28,6 +28,7 @@ namespace Data.ApplicationContext
         public DbSet<SkillDetail> SkillDetails { get; set; }
         public DbSet<MessagesCount> MessagesCount { get; set; }
         public DbSet<ProfileImage> ProfileImage { get; set; }
+        public DbSet<BannerImage> BannerImage { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

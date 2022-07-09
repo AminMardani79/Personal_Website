@@ -24,7 +24,8 @@ namespace Application.Services
             var model = new EditProfileViewModel()
             {
                 ProfileId = profile.ProfileId,
-                ProfileImage = profile.Image
+                ProfileImage = profile.Image,
+                FullName = profile.FullName
             };
             return model;
         }
@@ -33,10 +34,14 @@ namespace Application.Services
         {
             var profile = await _profileRepositoy.GetProfileImageAsync();
             bool checkImage = model.File.IsImage();
-            if (profile != null && model.File != null && checkImage)
+            if (profile != null)
             {
-                ImageConvertor.RemoveImage(model.ProfileImage);
-                profile.Image = ImageConvertor.SaveImage(model.File);
+                profile.FullName = model.FullName;
+                if (model.File != null && checkImage)
+                {
+                    ImageConvertor.RemoveImage(model.ProfileImage);
+                    profile.Image = ImageConvertor.SaveImage(model.File);
+                }
                 _profileRepositoy.UpdateProfile(profile);
             }
         }

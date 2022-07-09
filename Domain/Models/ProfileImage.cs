@@ -11,6 +11,8 @@ namespace Domain.Models
     {
         [Key]
         public int ProfileId { get; set; }
+        [Required,MaxLength(100)]
+        public string FullName { get; set; }
         [MaxLength(200)]
         public string Image { get; set; } 
 

@@ -1,32 +1,11 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "امین مردانی";
 }
 <!-- Home -->
 <section id="home" data-nav-tooltip="Home" class="pp-section pp-scrollable">
     <div class="home-banner">
         <div class="container">
-            <div class="row full-screen align-items-center">
-                <div class="col-lg-12">
-                    <div class="type-box">
-                        <h6>سلام، خوش آمدید</h6>
-                        <h1>امین مردانی</h1>
-                        <p class="lead">من یک <span id="type-it"></span> هستم</p>
-                        <p class="desc">
-                            من خدمات طراحی و توسعه برای مشتریان در هر مقیاس ارائه می دهم. متخصص در
-                            ایجاد وب سایت ها، خدمات وب و فروشگاه های آنلاین زیبا و مدرن.
-                        </p>
-                        <div class="btn-bar">
-                            <a class="px-btn px-btn-theme" href="#">دریافت رزومه</a>
-                        </div>
-                    </div>
-                </div>
-@*                <div class="col-lg-6">
-                    <div class="hb-img">
-                        <img src="/static/img/home-banner.png" title="" alt="">
-                    </div>
-                </div>*@
-            </div>
+            <partial name="_Banner" />
         </div>
     </div>
 </section>
@@ -114,77 +93,77 @@
 <div class="menu-overlay"></div>
 <!-- End Menu Overlay -->
 @section Scripts{
-    <script>
-const { log } = require("util");
+<script>
+    const { log } = require("util");
 
-        function send_mail() {
-            var name = $("#name").val();
-            var email = $("#email").val();
-            var number = $("#number").val();
-            var subject = $("#subject").val();
-            var message = $("#message").val();
+            function send_mail() {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var number = $("#number").val();
+                var subject = $("#subject").val();
+                var message = $("#message").val();
 
-            var flag = 0;
+                var flag = 0;
 
-            if (name == "") {
-                jQuery("#name").addClass('invalid');
-                jQuery("#val_user_name").html("وارد کردن نام الزامی است");
-                flag = 1;
-            } else {
-                jQuery("#name").removeClass('invalid');
-                jQuery("#val_user_name").html("");
-            }
+                if (name == "") {
+                    jQuery("#name").addClass('invalid');
+                    jQuery("#val_user_name").html("وارد کردن نام الزامی است");
+                    flag = 1;
+                } else {
+                    jQuery("#name").removeClass('invalid');
+                    jQuery("#val_user_name").html("");
+                }
 
-            if (subject == "") {
-                jQuery("#subject").addClass('invalid');
-                jQuery("#val_subject").html("وارد کردن موضوع الزامی است");
-                flag = 1;
-            } else {
-                jQuery("#subject").removeClass('invalid');
-                jQuery("#val_subject").html("");
-            }
+                if (subject == "") {
+                    jQuery("#subject").addClass('invalid');
+                    jQuery("#val_subject").html("وارد کردن موضوع الزامی است");
+                    flag = 1;
+                } else {
+                    jQuery("#subject").removeClass('invalid');
+                    jQuery("#val_subject").html("");
+                }
 
-            if (message == "") {
-                jQuery("#message").addClass('invalid');
-                jQuery("#val_message").html("لطفا پیام خود را وارد کنید");
-                flag = 1;
-            } else {
-                jQuery("#message").removeClass('invalid');
-                jQuery("#val_message").html("");
-            }
+                if (message == "") {
+                    jQuery("#message").addClass('invalid');
+                    jQuery("#val_message").html("لطفا پیام خود را وارد کنید");
+                    flag = 1;
+                } else {
+                    jQuery("#message").removeClass('invalid');
+                    jQuery("#val_message").html("");
+                }
 
-            if (flag == 1) {
-                return false;
-            }
+                if (flag == 1) {
+                    return false;
+                }
 
-            var data = {
-                "name": name,
-                "subject": subject,
-                "message": message,
-                "email": email,
-                "number": number
-            };
+                var data = {
+                    "name": name,
+                    "subject": subject,
+                    "message": message,
+                    "email": email,
+                    "number": number
+                };
 
-            jQuery('.form-message').hide();
-            jQuery('#snd_message').show();
+                jQuery('.form-message').hide();
+                jQuery('#snd_message').show();
 
-            $.ajax({
-                url: "/SendMessage", //1
-                data: data, //2
-                type: "Get", //3
-            }).done(function () {
-                Swal.fire(
-                    'ارسال شد',
-                    'پیام با موفقیت ارسال شد',
-                    'success'
-                ).then(() => {
-                    $("#name").val('');
-                    $("#email").val('');
-                    $("#number").val('');
-                    $("#subject").val('');
-                    $("#message").val('');
+                $.ajax({
+                    url: "/SendMessage", //1
+                    data: data, //2
+                    type: "Get", //3
+                }).done(function () {
+                    Swal.fire(
+                        'ارسال شد',
+                        'پیام با موفقیت ارسال شد',
+                        'success'
+                    ).then(() => {
+                        $("#name").val('');
+                        $("#email").val('');
+                        $("#number").val('');
+                        $("#subject").val('');
+                        $("#message").val('');
+                    });
                 });
-            });
-        }
-    </script>
+            }
+</script>
 }

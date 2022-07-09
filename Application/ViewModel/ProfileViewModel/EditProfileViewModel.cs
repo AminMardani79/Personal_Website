@@ -10,7 +10,9 @@ namespace Application.ViewModel.ProfileViewModel
 {
     public class EditProfileViewModel
     {
-        public int ProfileId { get; set; } 
+        public int ProfileId { get; set; }
+        [Required(ErrorMessage = "این رشته نباید خالی باشد"), MaxLength(100,ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        public string FullName { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(200, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string ProfileImage { get; set; }

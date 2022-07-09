@@ -1,0 +1,25 @@
+﻿@using Application.Interface
+@inject IBannerImageService bannerImageService
+@{
+    var banner = bannerImageService.GetBannerAsync().Result;
+}
+<div class="row full-screen align-items-center">
+    <div class="col-lg-6">
+        <div class="type-box">
+            <h6>@banner.BannerTitle</h6>
+            <h1>@banner.FullName</h1>
+            <p class="lead">من یک <span id="type-it"></span> هستم</p>
+            <p class="desc">
+                @banner.Description
+            </p>
+            <div class="btn-bar">
+                <a class="px-btn px-btn-theme" href="#">دریافت رزومه</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="hb-img">
+            <img src="/image/@banner.BannerImage" title="" alt="">
+        </div>
+    </div>
+</div>

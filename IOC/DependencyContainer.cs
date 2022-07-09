@@ -31,6 +31,7 @@ namespace IOC
             service.AddScoped<IAccountRepository,AccountRepository>();
             service.AddScoped<IMessagesCountRepository,MessagesCountRepository>();
             service.AddScoped<IProfileImageRepository,ProfileImageRepository>();
+            service.AddScoped<IBannerImageRepository,BannerImageRepository>();
 
             // Services
             service.AddScoped<IAboutService, AboutService>();
@@ -48,6 +49,7 @@ namespace IOC
             service.AddScoped<IAccountService, AccountService>();
             service.AddScoped<IMessagesCountService, MessagesCountService>();
             service.AddScoped<IProfileService,ProfileService>();
+            service.AddScoped<IBannerImageService,BannerImageService>();
         }
     }
 }
