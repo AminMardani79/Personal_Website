@@ -88,52 +88,5 @@
     </div>
 </div>
 @section Scripts{
-    <script>
-        const checkboxes = $(".show_message");
-        checkboxes.change((e)=>{
-            $.ajax({
-                type : "Get",
-                url : "/ShowMessage",
-                data : {id : e.target.id},
-                success :()=>{
-                    console.log("success");
-                },
-                error : (e)=>{
-                    console.log(e);
-                }
-            });
-        });
-        function RemoveMessage(id) {
-            Swal.fire({
-                title: 'آیا از حذف پیام اطمینان دارید ؟',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'بله',
-                cancelButtonText: 'خیر'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.get("/Admin/DeleteMessage/" + id)
-                        .done(function () {
-                            Swal.fire(
-                                'حذف شد',
-                                'حذف با موفقیت انجام شد',
-                                'success'
-                            );
-                            $("#item_" + id).fadeOut(1000);
-                        })
-                        .fail(() => {
-                            Swal.fire(
-                                'حذف با مشکل مواجه شد',
-                                'error'
-                            )
-                        });
-                }
-            })
-        }
-        function ShowMessage(id) {
-            $('#desc_' + id).fadeToggle();
-        }
-    </script>
+    <script src="~/js/Admin.js"></script>
 }

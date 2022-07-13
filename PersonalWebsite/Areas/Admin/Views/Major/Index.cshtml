@@ -59,36 +59,5 @@
     </div>
 </div>
 @section Scripts{
-    <script>
-        function RemoveMajor(id) {
-        Swal.fire({
-            title: 'آیا از حذف تجربه اطمینان دارید ؟',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'بله',
-            cancelButtonText : 'خیر'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.get("/Admin/DeleteMajor/" + id)
-                    .done(function () {
-                        Swal.fire(
-                            'حذف شد',
-                            'حذف با موفقیت انجام شد',
-                            'success'
-                        ).then(() => {
-                            location.reload();
-                        });
-                    })
-                    .fail(() => {
-                        Swal.fire(
-                            'حذف با مشکل مواجه شد',
-                            'error'
-                        )
-                    });
-            }
-        })
-    }
-    </script>
+    <script src="~/js/Admin.js"></script>
 }
