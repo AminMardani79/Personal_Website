@@ -11,7 +11,6 @@ namespace Domain.Models
     {
         [Key]
         public int SkillId { get; set; }
-        [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(250, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string SkillDescription { get; set; }
         public IEnumerable<SkillDetail> SkillDetails { get; set; }

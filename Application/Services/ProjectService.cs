@@ -133,7 +133,8 @@ namespace Application.Services
                     ProjectSubTitle = project.ProjectSubTitle,
                     ProjectTitle = project.ProjectTitle,
                     ProjectImage = project.ProjectImage,
-                    Categories = categoryModels
+                    Categories = categoryModels,
+                    DownloadLink = project.DownloadLink
                 });
             }
             return models;

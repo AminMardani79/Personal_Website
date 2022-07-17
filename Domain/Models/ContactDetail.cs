@@ -12,7 +12,7 @@ namespace Domain.Models
         [Key]
         public int ContactId { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(150, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        [MaxLength(500, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string ContactDescription { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(40, ErrorMessage = "طول این رشته بیش از حد مجاز است")]

@@ -14,7 +14,16 @@
     <div class="grid-item @str">
         <div class="portfolio-box-01">
             <div class="portfolio-info">
-                <h5 class="white-color primary-font">@item.ProjectTitle</h5>
+                <h5 class="white-color primary-font">
+                    @if(item.DownloadLink != null)
+                    {
+                        <a href="@item.DownloadLink" target="_blank">@item.ProjectTitle</a>
+                    }
+                    else
+                    {
+                        @item.ProjectTitle
+                    }
+                </h5>
                 <span>@item.ProjectSubTitle</span>
                 <p>
                     @item.ProjectDescription
@@ -25,8 +34,8 @@
                     </a>
                 </div>
             </div>
-            <div class="portfolio-img">
-                <img src="/image/@item.ProjectImage" title="" alt="">
+            <div class="portfolio-img" style="min-height:250px">
+                <img src="/image/@item.ProjectImage" title="" alt="" style="min-height:250px">
                 <div class="portfolio-icon">
                     <a href="/image/@item.ProjectImage" class="gallery-link">
                         <span class="ti-plus"></span>
