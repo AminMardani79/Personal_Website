@@ -55,6 +55,11 @@
                         <span asp-validation-for="DownloadLink" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputText1">لینک سایت</label>
+                        <input type="text" class="form-control" asp-for="SiteUrl" placeholder="لینک سایت" />
+                        <span asp-validation-for="SiteUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputText1">توضیحات</label>
                         <textarea asp-for="ProjectDescription" rows="5" class="form-control"></textarea>
                         <span asp-validation-for="ProjectDescription" class="text-danger"></span>

@@ -36,7 +36,7 @@ namespace Data.Repository
 
         public async Task<IEnumerable<Project>> GetProjectsList(string search, int skip, int take)
         {
-            return await _context.Projects.Where(p => EF.Functions.Like(p.ProjectTitle, $"%{search}%")).Skip(skip).Take(take).ToListAsync();
+            return await _context.Projects.Where(p => EF.Functions.Like(p.ProjectTitle, $"%{search}%")).Skip(skip).Take(take).OrderByDescending(item => item.ProjectId).ToListAsync();
         }
 
         public void Save()
@@ -51,7 +51,7 @@ namespace Data.Repository
         }
         public async Task<IEnumerable<Project>> ShowProjects()
         {
-            return await _context.Projects.ToListAsync();
+            return await _context.Projects.OrderByDescending(item=> item.ProjectId).ToListAsync();
         }
         public async Task<int> GetProjectsCount()
         {

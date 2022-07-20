@@ -21,8 +21,10 @@ namespace Application.ViewModel.ProjectViewModel
         [MaxLength(250, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string ProjectDescription { get; set; }
         public IFormFile ImageFile { get; set; }
-        [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        [MaxLength(200, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string DownloadLink { get; set; }
+        [MaxLength(200, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        public string SiteUrl { get; set; }
 
 
         public List<int> CategoryItems { get; set; }

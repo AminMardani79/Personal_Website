@@ -24,8 +24,10 @@ namespace Domain.Models
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
         [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string ProjectImage { get; set; }
-        [MaxLength(100, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        [MaxLength(200, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string DownloadLink { get; set; }
+        [MaxLength(200, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        public string SiteUrl { get; set; }
 
         public IEnumerable<CategoryProject> CategoryProjects { get; set; }
 

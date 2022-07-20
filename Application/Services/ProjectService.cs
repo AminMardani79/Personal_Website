@@ -34,6 +34,7 @@ namespace Application.Services
             model.ProjectDescription = project.ProjectDescription;
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
+            model.SiteUrl = project.SiteUrl;
             model.ProjectImage = project.ImageFile switch
             {
                 null => "default.png",
@@ -56,6 +57,7 @@ namespace Application.Services
             model.ProjectDescription = project.ProjectDescription;
             model.ProjectSubTitle = project.ProjectSubTitle;
             model.ProjectTitle = project.ProjectTitle;
+            model.SiteUrl = project.SiteUrl;
             if (project.ImageFile != null)
             {
                 bool checkImage = project.ImageFile.IsImage();
@@ -80,6 +82,7 @@ namespace Application.Services
             model.ProjectTitle = project.ProjectTitle;
             model.ProjectId = project.ProjectId;
             model.ProjectImage = project.ProjectImage;
+            model.SiteUrl = project.SiteUrl;
             return model;
         }
 
@@ -134,7 +137,8 @@ namespace Application.Services
                     ProjectTitle = project.ProjectTitle,
                     ProjectImage = project.ProjectImage,
                     Categories = categoryModels,
-                    DownloadLink = project.DownloadLink
+                    DownloadLink = project.DownloadLink,
+                    SiteUrl = project.SiteUrl
                 });
             }
             return models;

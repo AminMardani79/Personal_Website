@@ -14,6 +14,7 @@ namespace Application.ViewModel.ProjectViewModel
         public string ProjectDescription { get; set; }
         public string ProjectImage { get; set; }
         public string DownloadLink { get; set; }
+        public string SiteUrl { get; set; }
         public List<ProjectCategoryViewModel.ProjectCategoryViewModel> Categories { get; set; }
     }
 }

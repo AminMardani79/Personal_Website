@@ -9,15 +9,16 @@
         filters[index] = category.CategoryFilter;
         index++;
     }
-    var str = String.Join(" ",filters);
+    var str = String.Join(" ", filters);
 
     <div class="grid-item @str">
         <div class="portfolio-box-01">
             <div class="portfolio-info">
                 <h5 class="white-color primary-font">
-                    @if(item.DownloadLink != null)
+                    @if (item.SiteUrl != null)
                     {
-                        <a href="@item.DownloadLink" target="_blank">@item.ProjectTitle</a>
+                        <a  class="siteLink">@item.ProjectTitle</a>
+                        <input type="hidden" value="@item.SiteUrl" class="siteUrl" />
                     }
                     else
                     {
@@ -25,17 +26,18 @@
                     }
                 </h5>
                 <span>@item.ProjectSubTitle</span>
-                <p>
-                    @item.ProjectDescription
-                </p>
                 <div class="flex justify-content-center py-2">
-                    <a href="">
-                        <i class="fas fa-cloud-download-alt"></i>
-                    </a>
+                    @if (item.DownloadLink != null)
+                    {
+                        <a href="@item.DownloadLink" download="@item.DownloadLink">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </a>
+
+                    }
                 </div>
             </div>
-            <div class="portfolio-img" style="min-height:250px">
-                <img src="/image/@item.ProjectImage" title="" alt="" style="min-height:250px">
+            <div class="portfolio-img" style="min-height:235px">
+                <img src="/image/@item.ProjectImage" title="" alt="" style="min-height:235px">
                 <div class="portfolio-icon">
                     <a href="/image/@item.ProjectImage" class="gallery-link">
                         <span class="ti-plus"></span>
