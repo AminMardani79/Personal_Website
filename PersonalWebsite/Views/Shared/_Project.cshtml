@@ -17,8 +17,8 @@
                 <h5 class="white-color primary-font">
                     @if (item.SiteUrl != null)
                     {
-                        <a  class="siteLink">@item.ProjectTitle</a>
-                        <input type="hidden" value="@item.SiteUrl" class="siteUrl" />
+                        <a href="@item.SiteUrl" target="_blank" class="siteLink">@item.ProjectTitle</a>
+                        
                     }
                     else
                     {
@@ -32,7 +32,6 @@
                         <a href="@item.DownloadLink" download="@item.DownloadLink">
                             <i class="fas fa-cloud-download-alt"></i>
                         </a>
-
                     }
                 </div>
             </div>

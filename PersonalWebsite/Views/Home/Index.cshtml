@@ -94,44 +94,6 @@
 <!-- End Menu Overlay -->
 @section Scripts{
 <script>
-            const siteLinks = document.querySelectorAll('.siteLink');
-            for(let i=0;i<siteLinks.length;i++){
-                siteLinks[i].style.cursor = "pointer"
-                siteLinks[i].addEventListener('click',(e)=>{
-                    const result =  detectVPN().then(res=>{
-                        if(res.usingVPN){
-                            const siteUrl = siteLinks[i].nextElementSibling.value;
-                            createLink(siteUrl)
-                        }else{
-                            alert("برای مشاهده این سایت فیلترشکن خود را روشن کنید !!");
-                        }
-                    });
-
-                })
-            }
-            function detectVPN() {
-                var browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                return fetch(`https://ipapi.co/json`)
-                    .then(function (response) {
-                    return response.json();
-                        })
-                .then(function (data) {
-                    var ipTimezone = data.timezone;
-                        return {
-                        usingVPN: ipTimezone != browserTimezone,
-              };
-            })
-            .catch((err) => {
-              return {usingVPN:false};
-            });
-            }
-            function createLink(siteUrl){
-                const a = document.createElement('a');
-                a.href = siteUrl;
-                a.target = "_blank";
-                const event = new MouseEvent('click');
-                a.dispatchEvent(event)
-            }
             var audio = document.getElementById("audioPlayer");
             var isPlaying = false;
 
