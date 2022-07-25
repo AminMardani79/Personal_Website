@@ -14,7 +14,7 @@ namespace Application.ViewModel.AboutMeViewModel
         [MaxLength(150, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string AboutMeDes { get; set; }
         [Required(ErrorMessage = "این رشته نباید خالی باشد")]
-        [MaxLength(300, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
+        [MaxLength(800, ErrorMessage = "طول این رشته بیش از حد مجاز است")]
         public string AboutMeContext { get; set; }
         [Required]
         public int CustomerCount { get; set; }
